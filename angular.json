@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-rocks"
+    }
+  },
+  "defaultProject": "angular-rocks",
+  "cli": {
+    "analytics": false
+  }
 }
