@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListComponent} from "./list/list.component";
+import { CardComponent} from "./card/card.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent
+    ListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
