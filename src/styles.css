@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+nav {
+  background-image: url("./images/back.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 360px;
+  background-position-y: 40%;
+}
+
+.brand-logo {
+  background-image: url("./images/logo.png");
+  background-size: cover;
+  width: 8%;
+  height: 10%;
+  margin-top: 1%;
+}
+
+main {
+  background-color: #171717;
+  height: 80vh;
+  padding-top: 2%;
+}

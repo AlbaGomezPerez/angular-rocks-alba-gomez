@@ -1,7 +1,17 @@
-<div class="toolbar" role="banner">
-  <p>soy el componente lista</p>
+<div class="list-container container">
+  <div *ngFor="let band of allRockBands">
+
+  <div class="card">
+    <ul class="card-image">
+      <li class="card-list waves-effect waves-block waves-light">
+        <div class="btn-floating btn-large container">
+          <img class="band-image" src="{{band.image}}" alt="band">
+        </div>
+        <p class="center">{{band.name}}</p>
+      </li>
+    </ul>
+  </div>
+      </div>
 </div>
-
-
 
 <router-outlet></router-outlet>
