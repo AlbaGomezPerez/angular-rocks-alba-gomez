@@ -24,6 +24,11 @@
 .material-icons {
   font-size: 30px;
   cursor: pointer;
+  color: #638999;
+}
+
+.remove {
+  color: #33141e;
 }
 
 a {

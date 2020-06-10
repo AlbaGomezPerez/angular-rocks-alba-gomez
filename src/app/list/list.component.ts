@@ -23,14 +23,6 @@ export class ListComponent implements OnInit {
   }
 
 
-  // private fetchBands() {
-  //   this.json
-  //     .getJsonBands('https://angular-rocks.firebaseio.com/bands.json')
-  //     .subscribe(data => {
-  //       console.log(data);
-  //       return data;
-  //     });
-  // }
 
   private fetchBands() {
     this.bandsService
@@ -44,6 +36,11 @@ export class ListComponent implements OnInit {
           this.allRockBands = allBands;
         }
       });
+  }
+
+  removeBand() {
+    let band = document.querySelector('.row');
+    band.remove();
   }
 }
 
