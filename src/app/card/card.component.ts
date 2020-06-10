@@ -1,10 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'card-band',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-export class CardComponent {
-  title = 'alba';
+export class CardComponent implements OnInit{
+  @Input() band: [];
+  constructor() {
+
+  }
+
+  ngOnInit() {
+  }
 }

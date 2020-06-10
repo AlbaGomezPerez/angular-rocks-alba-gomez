@@ -1,4 +1,48 @@
+.row {
+  margin-bottom: 0;
+  padding-bottom: 2%;
+}
+
+.card {
+  padding: 0;
+  padding-bottom: 1%;
+  background-color: black;
+}
+
 .card-action {
   display: flex;
   flex-direction: column;
+  padding: 0;
 }
+
+.card-title {
+  display: flex;
+  justify-content: center;
+  background-color: #bdb8b4;
+}
+
+iframe {
+  border: none;
+}
+
+
+
+.card-contain {
+  font-size: 18px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.material-icons {
+  color: #638999;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+

@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AppComponent} from "./app.component";
 import {ListComponent} from "./list/list.component";
 import {CardComponent} from "./card/card.component";
 
