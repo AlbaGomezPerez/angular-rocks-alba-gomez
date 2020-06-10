@@ -36,11 +36,17 @@ iframe {
 
 .material-icons {
   color: #638999;
+  cursor: pointer;
 }
 
 .list {
   display: flex;
   justify-content: space-between;
+}
+
+.back {
+  color: white;
+  font-size: 40px;
 }
 
 
