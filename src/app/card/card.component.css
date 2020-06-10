@@ -23,9 +23,8 @@
 
 iframe {
   border: none;
+  height: 300px;
 }
-
-
 
 .card-contain {
   font-size: 18px;
