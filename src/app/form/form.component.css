@@ -1,0 +1,24 @@
+.all-form {
+  height: 100vh;
+}
+
+.form-container {
+  background-color: #bdb8b4;
+  padding: 2%;
+}
+
+.form-title {
+  background-color: black;
+  color: white;
+  font-size: 22px;
+}
+
+
+input {
+  background-color: #4d4d4d;
+  color: #9e9e9e;
+}
+
+.btn {
+  background-color: #638999;
+}

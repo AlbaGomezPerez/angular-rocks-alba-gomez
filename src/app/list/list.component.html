@@ -1,6 +1,11 @@
+<a class="center add-text">Create new band
+  <i routerLink="/form" class="material-icons add">add_circle</i>
+</a>
 <div  routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
 true}" class="bands">
+
 <div class="container center" *ngFor="let band of allRockBands">
+
   <div class="row">
     <div class="col s12 m7 l6 offset-l3">
       <div class="card circle">

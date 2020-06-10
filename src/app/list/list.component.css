@@ -30,6 +30,18 @@ a {
   color: black !important;
 }
 
+.add {
+  color: white;
+  margin-bottom: 1%;
+}
+
+.add-text {
+  color: white !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 
 
 

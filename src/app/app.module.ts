@@ -6,13 +6,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ListComponent} from "./list/list.component";
 import { CardComponent} from "./card/card.component";
+import {FormComponent} from "./form/form.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    CardComponent
+    CardComponent,
+    FormComponent
   ],
   imports: [
     BrowserModule,
