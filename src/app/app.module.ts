@@ -7,6 +7,11 @@ import { AppComponent } from './app.component';
 import { ListComponent} from "./list/list.component";
 import { CardComponent} from "./card/card.component";
 import {FormComponent} from "./form/form.component";
+import {PruebaComponent} from "./prueba/prueba.component";
+// import {FilterPipe} from "./pipes/filter.pipe";
+// import {FormsModule} from "@angular/forms";
+
+
 
 
 @NgModule({
@@ -14,12 +19,14 @@ import {FormComponent} from "./form/form.component";
     AppComponent,
     ListComponent,
     CardComponent,
-    FormComponent
+    FormComponent,
+    PruebaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    // FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

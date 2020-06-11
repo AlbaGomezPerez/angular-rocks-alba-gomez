@@ -14,10 +14,16 @@ export class BandsService {
 
   dataUrl = 'https://angular-rocks.firebaseio.com/bands.json';
 
-  getJsonBands(dataUrl: string){
+  getBands(){
     return this.http.get<Array<Band>>(this.dataUrl)
   }
+
+  updateBands(bands: Array<Band>) {
+    return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands));
+  }
 }
+
+
 
 /**
  * Define data types to Starship object

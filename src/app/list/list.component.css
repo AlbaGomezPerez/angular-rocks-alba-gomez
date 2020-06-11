@@ -1,3 +1,22 @@
+.search-nav {
+  background-image: none;
+  color: white;
+}
+
+.input {
+  background-color: #4d4d4d;
+  display: flex;
+  height: 40% !important;
+  color: white;
+}
+
+
+#search {
+  background-color: #4d4d4d;
+  height: 100%;
+  border-bottom: none;
+}
+
 .bands {
   display: flex;
   flex-wrap: wrap;
