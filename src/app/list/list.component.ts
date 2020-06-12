@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import {BandsService, Band} from "./bands.service";
-
-
+import BandsJson from "src/assets/json/bands.json";
 
 /**
  * Show the list
@@ -18,6 +17,7 @@ export class ListComponent implements OnInit {
   allRockBands: Array<Band> = [];
   filteredBands = '';
   inputValue: string;
+  originalBandsList: Array<Band> = BandsJson;
 
 
   ngOnInit() {
@@ -39,16 +39,31 @@ export class ListComponent implements OnInit {
     let idBand = event.target.id;
     console.log(idBand);
 
-    const filtered = this.allRockBands.filter(band => {
+    const filteredBands = this.allRockBands.filter(band => {
       return band.id !== parseInt(idBand, 10);
     });
 
-    this.bandsService.updateBands(filtered).subscribe({
+    this.updateDatabands(filteredBands);
+  }
+
+  restoreOriginalsBands() {
+    this.updateDatabands(this.originalBandsList);
+  }
+
+
+  //Second part of the fetch to update data base.
+  //filtered is an array with bands (updated bands, less or more)
+  //next: indicate the type of response and update the state again
+  updateDatabands(updatedArrayBand: Array<Band>) {
+    this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
         this.allRockBands = bands;
       }
     });
   }
+
+
+
 
 
 
