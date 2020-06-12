@@ -1,9 +1,10 @@
 .all-form {
   height: 100vh;
+  background-color: black;
 }
 
 .form-container {
-  background-color: #bdb8b4;
+  background-color: #171717;
   padding: 2%;
 }
 
@@ -17,8 +18,14 @@
 input {
   background-color: #4d4d4d;
   color: #9e9e9e;
+  margin-top: 2%;
+}
+
+#members {
+  margin-top: 1%;
 }
 
 .btn {
   background-color: #638999;
 }
+
