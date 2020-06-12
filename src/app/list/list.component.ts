@@ -25,7 +25,6 @@ export class ListComponent implements OnInit {
   }
 
   private fetchBands() {
-    console.log('fetchBands');
     this.bandsService
       .getBands()
       .subscribe( {
