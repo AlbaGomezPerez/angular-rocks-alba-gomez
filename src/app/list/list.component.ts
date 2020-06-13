@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import {BandsService, Band} from "./bands.service";
 import BandsJson from "src/assets/json/bands.json";
+import {Subject} from "rxjs";
 
 /**
  * Show the list
@@ -15,9 +16,11 @@ export class ListComponent implements OnInit {
   //constructor(private http: HttpClient) {}
   constructor(public bandsService: BandsService) {}
   allRockBands: Array<Band> = [];
-  filteredBands = '';
   inputValue: string;
   originalBandsList: Array<Band> = BandsJson;
+
+  searchValue: string;
+  noFilteredBands: Array<Band>;
 
 
   ngOnInit() {
@@ -30,6 +33,7 @@ export class ListComponent implements OnInit {
       .subscribe( {
         next: (bands: Array<Band>) => {
           this.allRockBands = bands;
+          this.noFilteredBands = bands;
         }
       });
   }
@@ -49,7 +53,6 @@ export class ListComponent implements OnInit {
     this.updateDatabands(this.originalBandsList);
   }
 
-
   //Second part of the fetch to update data base.
   //filtered is an array with bands (updated bands, less or more)
   //next: indicate the type of response and update the state again
@@ -57,9 +60,21 @@ export class ListComponent implements OnInit {
     this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
         this.allRockBands = bands;
+        this.noFilteredBands = bands;
       }
     });
   }
+
+
+  searchBands(): void {
+    const filteredBands = this.noFilteredBands.filter(band => band.name.toLowerCase().includes(this.searchValue.toLowerCase()));
+    this.allRockBands = filteredBands;
+    }
+
+
+
+
+
 
 
 

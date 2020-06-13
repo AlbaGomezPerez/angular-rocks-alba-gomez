@@ -8,6 +8,7 @@ import { ListComponent} from "./list/list.component";
 import { CardComponent} from "./card/card.component";
 import {FormComponent} from "./form/form.component";
 import {PruebaComponent} from "./prueba/prueba.component";
+import {FormsModule} from "@angular/forms";
 // import {FilterPipe} from "./pipes/filter.pipe";
 // import {FormsModule} from "@angular/forms";
 
@@ -26,6 +27,7 @@ import {PruebaComponent} from "./prueba/prueba.component";
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     // FormsModule,
   ],
   providers: [],

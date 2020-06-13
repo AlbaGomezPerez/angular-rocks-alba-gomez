@@ -24,7 +24,6 @@ export class BandsService {
 }
 
 
-
 /**
  * Define data types to Starship object
  */

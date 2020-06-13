@@ -1,8 +1,10 @@
-<div routerLink="/prueba" [title]="title">
+<div [title]="title">
   <p>hola, soy esa prueba y quiero pintar datos como este {{newName}}</p>
   <h1>{{newName}}</h1>
   <div>
     <p></p>
   </div>
   <h1></h1>
+  <input type="text" (input)="inputValue = $event.target.value">
+  <button (click)="buttonClick"></button>
 </div>

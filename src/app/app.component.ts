@@ -9,8 +9,13 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
   names: string [];
   title = 'Paco';
+  FatherText: string;
   constructor() {
     this.names = ['Cris', 'Carlos', 'Gonzalo'];
+  }
+
+  valueInputResponse(dataInput: string) {
+    this.FatherText = dataInput;
   }
 
   ngOnInit(): void {}

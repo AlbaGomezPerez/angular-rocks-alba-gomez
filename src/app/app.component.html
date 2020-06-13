@@ -5,17 +5,18 @@
         <div class="brand-logo center"> </div>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><a href="sass.html">{{title}}</a></li>
-          <li><a href="badges.html">Components</a></li>
+          <li><a href="badges.html">{{FatherText}}</a></li>
           <li><a href="collapsible.html">JavaScript</a></li>
         </ul>
       </div>
     </nav>
   </header>
   <main>
+    <app-list></app-list>
+<!--    <prueba [newName]="title" (send)="valueInputResponse($event)"></prueba>-->
 <!--    <router-outlet *ngFor="let title of titles">-->
 <!--    </router-outlet>-->
     <router-outlet>
-      <app-list></app-list>
     </router-outlet>
 <!--    <router-outlet></router-outlet>-->
   </main>

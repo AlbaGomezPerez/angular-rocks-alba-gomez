@@ -14,15 +14,15 @@
           class="input center"
           id="search"
           type="search"
-          required>
-<!--          name="filteredBands"-->
-<!--          [(ngModel)]="filteredBands"-->
+          required
+          [(ngModel)]="searchValue"
+          (ngModelChange)="searchBands()">
         <label class="label-icon" for="search"></label>
 </div>
 
   <!--     *ngFor="let band of allRockBands | filter: filteredBands">-->
 <div class="container center"
-     *ngFor="let band of allRockBands">
+       *ngFor="let band of allRockBands">
   <div class="row">
     <div class="col s12 m7 l6 offset-l3">
       <div class="card circle">
@@ -43,6 +43,8 @@
   </div>
 </div>
 <!--</div>-->
+
+<form allRockBands></form>
 
 <router-outlet></router-outlet>
 
