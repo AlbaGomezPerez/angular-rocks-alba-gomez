@@ -8,7 +8,7 @@ import {AppComponent} from "./app.component";
 
 
 const routes: Routes = [
-   {path: '', component: AppComponent, pathMatch: 'full'},
+   {path: '', component: ListComponent, pathMatch: 'full'},
   // {path: 'list', component: ListComponent},
   {path: 'band/:id', component: CardComponent, pathMatch: 'prefix'},
   {path: 'form', component: FormComponent},

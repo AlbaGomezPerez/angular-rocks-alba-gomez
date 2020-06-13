@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,24 @@ export class BandsService {
 
   dataUrl = 'https://angular-rocks.firebaseio.com/bands.json';
 
+  private bandsSource = new BehaviorSubject([]);
+  private currentBands = this.bandsSource.asObservable();
+
   getBands(){
-    return this.http.get<Array<Band>>(this.dataUrl)
+    this.currentBands.subscribe(bands=> {
+      if(bands.length == 0) {
+        this.http.get<Array<Band>>(this.dataUrl).subscribe(originalBands => {
+          this.bandsSource.next(originalBands);
+        })
+      }
+    })
+    return this.currentBands;
   }
 
   updateBands(bands: Array<Band>) {
     return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands));
   }
+
 }
 
 

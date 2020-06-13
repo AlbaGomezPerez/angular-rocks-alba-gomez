@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {Band, BandsService} from "../list/bands.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'card-band',
@@ -6,11 +8,16 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit{
-  @Input() band: [];
-  constructor() {
+  band: Band;
+  idBand: string;
 
+  constructor(public bandsService: BandsService, private route: ActivatedRoute) {
+    this.idBand = this.route.snapshot.params['id']
   }
 
   ngOnInit() {
+    this.bandsService.getBands().subscribe(bands => {
+      this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
+    });
   }
 }

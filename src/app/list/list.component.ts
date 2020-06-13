@@ -72,22 +72,6 @@ export class ListComponent implements OnInit {
     }
 
 
-
-
-
-
-
-
-
-
-
-  // getInputValue(event) {
-  //   let searchValue = event.currentTarget.value;
-  //   console.log(searchValue);
-  //   this.inputValue = searchValue;
-  // }
-
-
 }
 
 
