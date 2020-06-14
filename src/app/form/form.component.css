@@ -12,6 +12,7 @@
   background-color: black;
   color: white;
   font-size: 22px;
+  padding-top: 1%;
 }
 
 
@@ -27,5 +28,13 @@ input {
 
 .btn {
   background-color: #638999;
+}
+
+.back-button {
+  background-color: #33141e;
+}
+
+.back-container {
+  margin-bottom: 1%;
 }
 
