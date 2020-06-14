@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {BandsService, Band} from "../../app/list/bands.service";
+import {BandsService, Band} from "../services/bands.service";
 
 
 /**
@@ -32,9 +31,12 @@ export class FormComponent implements OnInit {
 
   //datos formulario
   getDataForm () {
-    this.newBand.id = this.idBand(100, 1000000).toFixed(0);
+    this.newBand.id = parseInt(this.idBand(100, 1000000).toFixed(0)) ;
+
     this.allRockBands.push(this.newBand);
+
     this.updateDatabands(this.allRockBands);
+    console.log(this.allRockBands);
   }
 
 //recoge los datos servicio

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Band, BandsService} from "../list/bands.service";
+import {Band, BandsService} from "../services/bands.service";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({

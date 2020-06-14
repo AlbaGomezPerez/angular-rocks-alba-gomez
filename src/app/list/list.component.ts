@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
-import {BandsService, Band} from "./bands.service";
+import {BandsService, Band} from "../services/bands.service";
 import BandsJson from "src/assets/json/bands.json";
 import {Subject} from "rxjs";
 
@@ -13,10 +13,8 @@ import {Subject} from "rxjs";
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  //constructor(private http: HttpClient) {}
   constructor(public bandsService: BandsService) {}
   allRockBands: Array<Band> = [];
-  inputValue: string;
   originalBandsList: Array<Band> = BandsJson;
 
   searchValue: string;
@@ -40,12 +38,11 @@ export class ListComponent implements OnInit {
 
    removeBand(event) :void{
     let idBand = event.target.id;
-    console.log(idBand);
 
     const filteredBands = this.allRockBands.filter(band => {
       return band.id !== parseInt(idBand, 10);
     });
-
+    console.log(filteredBands);
     this.updateDatabands(filteredBands);
   }
 
@@ -57,6 +54,7 @@ export class ListComponent implements OnInit {
   //filtered is an array with bands (updated bands, less or more)
   //next: indicate the type of response and update the state again
   updateDatabands(updatedArrayBand: Array<Band>) {
+
     this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
         this.allRockBands = bands;
