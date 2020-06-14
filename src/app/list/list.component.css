@@ -10,7 +10,6 @@
   color: white;
 }
 
-
 #search {
   background-color: #4d4d4d;
   height: 100%;
@@ -66,6 +65,26 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.btn {
+  background-color: #638999;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #171717;
+  margin-bottom: 1%;
+}
+
+.action-button {
+  width: 26%;
+  margin-top: 1%;
+}
+
+.search-container {
+  background-color: #171717;
 }
 
 

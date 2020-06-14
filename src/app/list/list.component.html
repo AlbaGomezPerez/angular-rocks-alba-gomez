@@ -1,16 +1,24 @@
-<a class="center add-text">Create new band
-  <i routerLink="/form" class="material-icons add">add_circle</i>
-</a>
-<a class="center add-text">Charge all originals bands
-  <i (click)="restoreOriginalsBands()" class="material-icons add">restore_page</i>
-</a>
+<div class="buttons-container container center">
+  <div>
+    <a class="center">
+    <span class="btn-text waves-effect waves-light btn action-button" routerLink="/form">Create new band</span>
+    </a>
+  </div>
+
+  <div>
+    <a class="center" (click)="restoreOriginalsBands()">
+    <span class="btn-text waves-effect waves-light btn action-button">Restore bands</span>
+    </a>
+  </div>
+</div>
+
 <div  routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
 true}" class="bands">
 
-<div class="container">
-    <i class="material-icons search-icon">search</i>
+<div class="container search-container center">
+  <i class="material-icons search-icon">search</i>
         <input
-          placeholder="Search one band"
+          placeholder="Search band"
           class="input center"
           id="search"
           type="search"
@@ -42,8 +50,6 @@ true}" class="bands">
   </div>
 </div>
 </div>
-
-<form></form>
 
 <router-outlet></router-outlet>
 
