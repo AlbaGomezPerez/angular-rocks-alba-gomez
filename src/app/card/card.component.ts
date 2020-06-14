@@ -21,4 +21,5 @@ export class CardComponent implements OnInit{
       console.log(this.band.image);
     });
   }
+
 }
