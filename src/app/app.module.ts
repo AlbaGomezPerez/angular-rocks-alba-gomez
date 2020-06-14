@@ -9,7 +9,7 @@ import { CardComponent} from "./card/card.component";
 import {FormComponent} from "./form/form.component";
 import {PruebaComponent} from "./prueba/prueba.component";
 import {FormsModule} from "@angular/forms";
-// import {FilterPipe} from "./pipes/filter.pipe";
+// import {SafePipe} from "./pipes/safe.pipe";
 // import {FormsModule} from "@angular/forms";
 
 
@@ -21,7 +21,8 @@ import {FormsModule} from "@angular/forms";
     ListComponent,
     CardComponent,
     FormComponent,
-    PruebaComponent
+    PruebaComponent,
+    // SafePipe
   ],
   imports: [
     BrowserModule,

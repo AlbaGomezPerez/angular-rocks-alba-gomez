@@ -18,6 +18,7 @@ export class CardComponent implements OnInit{
   ngOnInit() {
     this.bandsService.getBands().subscribe(bands => {
       this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
+      console.log(this.band.image);
     });
   }
 }

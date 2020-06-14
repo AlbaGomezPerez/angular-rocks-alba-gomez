@@ -6,7 +6,8 @@
 .card {
   padding: 0;
   padding-bottom: 1%;
-  background-color: black;
+  background-color: #171717;
+  border: 1px solid #171717;
 }
 
 .card-action {
@@ -19,6 +20,22 @@
   display: flex;
   justify-content: center;
   background-color: #bdb8b4;
+  margin-bottom: 4%;
+}
+
+.data-container {
+  padding: 0;
+}
+
+.btn-text {
+  background-color: black !important;
+  margin: auto;
+  width: 80%;
+}
+
+.data-text {
+  display: flex;
+  flex-direction: column;
 }
 
 iframe {
@@ -45,7 +62,28 @@ iframe {
 
 .back {
   color: white;
-  font-size: 40px;
+  font-size: 30px;
+}
+
+.back-button {
+  margin-bottom: 2%;
+}
+
+.btn {
+  background-color: #638999;
+}
+
+.band-image {
+  width: 100%;
+}
+
+.members {
+  width: 80%;
+  margin: auto;
+}
+
+.data-band {
+  margin-bottom: 4%;
 }
 
 

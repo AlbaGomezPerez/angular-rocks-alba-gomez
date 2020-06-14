@@ -3,35 +3,35 @@
   <div class="">
     <div class="row">
       <div class="">
-
-        <a>
-          <i routerLink="/" class="material-icons back">keyboard_backspace</i>
-        </a>
-
         <div class="card circle col s12 m7 l6 offset-l3" [ngStyle]="{'background-image': './back.jpg' }">
-          <span class="card-title">
-                        <a href="https://www.youtube.com/watch?v=ZoeZxpfTCXk" target="blank">
-                <i class="material-icons">web</i>
-              </a></span>
-          <div class="card-action card-media ">
-            <iframe src="https://www.youtube.com/embed/CD-E-LDc384"></iframe>
+          <a routerLink="/list" class="waves-effect waves-light btn back-button">
+            <i class="material-icons back left">keyboard_backspace</i>
+            Go back</a>
+          <span class="card-title">{{band.name}}
+                        </span>
+          <div class="center col l8 data-container">
+            <img class="band-image" [src]="band.image" alt="band">
           </div>
-          <div class="card-image container">
-            <div class="card-contain center">
-              <span>Nombre de la canción</span>
-              <span>United Kingdom <i class="material-icons">location_on</i></span>
+          <div class="card-image">
+            <div class="card-contain">
+              <span class="btn-text waves-effect waves-light btn">Country: <i class="material-icons right">location_on</i></span>
+              <span class="center data-band">{{band.country}}</span>
+              <span class="btn-text waves-effect waves-light btn">Video's song:<i class="material-icons right">music_note</i></span>
+              <span class="center data-band">{{band.title}}</span>
+
+              <span class="btn-text waves-effect waves-light btn center">Members:<i class="material-icons right">people</i></span>
+              <span class="center members data-band">{{band.members}}</span>
+              <a href="{{band.website}}" target="blank" class="center">Website
+              </a>
             </div>
-            <img class="band-image" src="./back.jpg" alt="band">
+            <iframe [src]="band.video"></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-
 <router-outlet></router-outlet>
-
 
 
 

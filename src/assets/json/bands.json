@@ -6,7 +6,7 @@
     "website": "https://rollingstones.com/",
     "members": "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
     "image": "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
-    "video": "https://www.youtube.com/embed?v=qEuV82GqQnE",
+    "video": "https://www.youtube.com/embed/qEuV82GqQnE",
     "title": "Ride 'em on down"
   },
   {
@@ -16,7 +16,7 @@
     "website": "https://lz50.ledzeppelin.com/?ref=https://es.wikipedia.org/",
     "members": "Jimmy Page, Robert Plant, John Paul Jones, John Bonham",
     "image": "https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg",
-    "video": "https://www.youtube.com/embed?v=HQmmM_qwG4k",
+    "video": "https://www.youtube.com/embed/HQmmM_qwG4k",
     "title": "Whole lotta love"
   },
   {
@@ -26,8 +26,8 @@
     "website": "http://www.queenonline.com/es",
     "members": "John Deacon, Freddie Mercury, Brian May, Roger Taylor",
     "image": "https://www.biografiasyvidas.com/biografia/q/fotos/queen.jpg",
-    "video": "https://www.youtube.com/embed?v=HgzGwKwLmgM",
-    "title": "Don't stop me now"
+    "video": "https://www.youtube.com/embed/kijpcUv-b8M",
+    "title": "Somebody to love"
   },
   {
     "id": 4,
@@ -36,7 +36,7 @@
     "website": "https://thelateryears.pinkfloyd.com/",
     "members": "Richard Wright, Nick Mason, David Gilmour",
     "image": "https://static.eldeber.com.bo//Files/Original/sites/eldeber/img/2017/05/09/pink_floyd.jpg",
-    "video": "https://www.youtube.com/embed?v=7jMlFXouPk8",
+    "video": "https://www.youtube.com/embed/7jMlFXouPk8",
     "title": "High hopes"
   },
   {
@@ -46,7 +46,7 @@
     "website": "http://www.deeppurple.com/",
     "members":  "Ian Paice, Ian Gillan, Roger Glover, Steve Morse, Don Airey",
     "image": "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/deep_purple-radionica.jpg?itok=0QdOMHwr",
-    "video": "https://www.youtube.com/embed?v=OorZcOzNcgE",
+    "video": "https://www.youtube.com/embed/OorZcOzNcgE",
     "title": "Child in time"
   },
   {
@@ -56,7 +56,7 @@
     "website": "https://www.acdc.com/",
     "members": "Brian Johnson, Angus Young, Stevie Young, Phil Rudd",
     "image": "https://www.efeeme.com/wp-content/uploads/ac-dc-29-02-12.jpg",
-    "video": "https://www.youtube.com/embed?v=v2AC41dglnM",
+    "video": "https://www.youtube.com/embed/v2AC41dglnM",
     "title": "Thunderstruck"
   },
   {
@@ -66,7 +66,7 @@
     "website": "https://www.ramones.com/",
     "members": "Joey Ramone, Johnny Ramone, Marky Ramone, Elvis Ramone, C. J. Ramone, Dee Dee Ramone, Tommy Ramone, Richie Ramone",
     "image": "https://www.radiopop.cl/wp-content/uploads/2020/05/ramones_2.jpg",
-    "video": "https://www.youtube.com/embed?v=bm51ihfi1p4",
+    "video": "https://www.youtube.com/embed/bm51ihfi1p4",
     "title": "I wanna be sedated"
   },
   {
@@ -76,16 +76,10 @@
     "website": "https://www.kissonline.com/welcome",
     "members": "Paul Stanley, Gene Simmons, Eric Singer, Tommy Thayer",
     "image": "https://garajedelrock.com/wp-content/uploads/2019/09/Kiss-1024x740.jpg",
-    "video": "https://www.youtube.com/embed?v=ZhIsAZO5gl0",
+    "video": "https://www.youtube.com/embed/ZhIsAZO5gl0",
     "title": "I was made for love you"
   }
 ]
-
-
-
-
-
-
 
 
 

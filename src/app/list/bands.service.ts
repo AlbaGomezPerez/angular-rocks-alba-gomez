@@ -47,6 +47,7 @@ export interface Band {
   video: string;
   image: string;
   website: string;
+  members: string;
 }
 
 
