@@ -9,8 +9,8 @@ import { CardComponent} from "./card/card.component";
 import {FormComponent} from "./form/form.component";
 import {PruebaComponent} from "./prueba/prueba.component";
 import {FormsModule} from "@angular/forms";
-// import {SafePipe} from "./pipes/safe.pipe";
-// import {FormsModule} from "@angular/forms";
+// import {ReactiveFormsModule} from "@angular/forms";
+// import {SafeUrlPipe} from "./pipes/safeUrl.pipe";
 
 
 
@@ -22,14 +22,14 @@ import {FormsModule} from "@angular/forms";
     CardComponent,
     FormComponent,
     PruebaComponent,
-    // SafePipe
+    // SafeUrlPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    // FormsModule,
+    FormsModule
+    // ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

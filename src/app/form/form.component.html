@@ -12,37 +12,48 @@
   <div class="col s12">
     <div class="row">
       <div class="input-field name col s6">
-        <input placeholder="The Rolling Stones" id="first_name" type="text" class="validate">
+        <input
+          placeholder="The Rolling Stones"
+          id="first_name"
+          type="text"
+          class="validate"
+          [(ngModel)]="newBand.name">
         <label class="input-name" for="first_name">Band</label>
       </div>
       <div class="input-field col s6">
-        <input placeholder="United Kingdom" id="country" type="text" class="validate">
+        <input placeholder="United Kingdom" id="country" type="text" class="validate" [(ngModel)]="newBand.country">
         <label class="input-name" for="country">Country</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input placeholder="https://url2.cl/3hjcp" id="video" type="text" class="validate">
+        <input placeholder="https://url2.cl/3hjcp" id="video" type="text" class="validate" [(ngModel)]="newBand.video">
         <label class="input-name" for="video">Video</label>
       </div>
       <div class="input-field col s6">
-        <input placeholder="Ride 'em on down" id="title" type="text" class="validate">
+        <input placeholder="Ride 'em on down" id="title" type="text" class="validate" [(ngModel)]="newBand.title">
         <label class="input-name" for="title">Video's song</label>
       </div>
     </div>
     <div class="row">
-      <div class="input-field col s4">
-        <input placeholder="https://url2.cl/3hjcp" id="image" type="text" class="validate">
+      <div class="input-field col s2">
+        <input placeholder="https://url2.cl/3hjcp" id="image" type="text" class="validate" [(ngModel)]="newBand.image">
         <label class="input-name" for="image">Image</label>
       </div>
+      <div class="input-field col s2">
+        <input placeholder="Ride 'em on down" id="website" type="text" class="validate" [(ngModel)]="newBand.website">
+        <label class="input-name" for="website">Website</label>
+      </div>
       <div class="input-field col s8">
-        <input placeholder="Jimmy Page, Robert Plant..." id="members" type="text" class="validate">
+        <input placeholder="Jimmy Page, Robert Plant..." id="members" type="text" class="validate" [(ngModel)]="newBand.members">
         <label class="input-name" for="members">Members</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col l12">
-        <button (click)="getDataForm()" routerLink="/" class="waves-effect waves-light btn col l4 right" type="submit">Create</button>
+        <button
+          class="waves-effect waves-light btn col l4 right"
+           routerLink="/" type="submit" (click)="getDataForm()">Create</button>
       </div>
     </div>
   </div>
@@ -50,5 +61,6 @@
 </div>
 </div>
 </div>
+
 
 
