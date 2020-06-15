@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import {BandsService, Band} from "../services/bands.service";
 import BandsJson from "src/assets/json/bands.json";
+import {Title} from  '@angular/platform-browser';
+import {SeoService} from "../services/seo.service";
 import {Subject} from "rxjs";
 
 /**
@@ -13,7 +15,10 @@ import {Subject} from "rxjs";
   styleUrls: ['./bands.component.css']
 })
 export class BandsComponent implements OnInit {
-  constructor(public bandsService: BandsService) {}
+  constructor(
+    public bandsService: BandsService,
+    private title: Title,
+    private seo: SeoService) {}
   allRockBands: Array<Band> = [];
   originalBandsList: Array<Band> = BandsJson;
 
@@ -22,6 +27,14 @@ export class BandsComponent implements OnInit {
 
 
   ngOnInit() {
+    let title:string = "Ng Seo - Rock bands website";
+    this.title.setTitle(title);
+
+    this.seo.generateTags({
+      title: "Ng Seo - Rock bands website",
+      description: "70s Rock bands",
+      slug: 'Rock bands'
+    });
     this.fetchBands();
   }
 
