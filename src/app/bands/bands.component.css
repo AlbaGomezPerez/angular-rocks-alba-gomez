@@ -101,6 +101,12 @@ nav {
 }
 
 
+@media (max-width: 380px) {
+  nav {
+    margin-bottom: 70px;
+  }
+}
+
 
 
 

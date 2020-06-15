@@ -9,18 +9,18 @@ true}" class="bands">
 
   <nav>
     <div class="nav-wrapper row">
-      <ul class="col l10 offset-l1 s12">
-        <li class="col l3 s3">
+      <ul class="col l10 offset-l1 offset-m2 offset-s1 m8 s12">
+        <li class="col l3 s5 m3">
           <a>
             <span class="btn-text waves-effect waves-light btn action-button" routerLink="/form">Create new rock band</span>
           </a>
         </li>
-        <li class="col l3 s3">
+        <li class="col l3 s5 m3">
           <a (click)="restoreOriginalsBands()">
             <span class="btn-text waves-effect waves-light btn action-button">Restore rock bands</span>
           </a>
         </li>
-        <li class="col l6">
+        <li class="col l6 s11 m6">
           <a>
           <span class="btn-text waves-effect waves-light btn search-button">
             <input
@@ -41,7 +41,7 @@ true}" class="bands">
 <div class="container center"
        *ngFor="let band of allRockBands">
   <div class="row">
-    <div class="col s12 m7 l6 offset-l3">
+    <div class="col s12 m8 l6 offset-l3 offset-m2">
       <div class="card circle">
         <div class="card-image circle">
           <img class="circle" src="{{band.image}}" alt="band">
