@@ -5,8 +5,7 @@
 
 .input {
   background-color: #4d4d4d;
-  display: flex;
-  height: 40% !important;
+  height: 80% !important;
   color: white;
 }
 
@@ -79,17 +78,28 @@ a {
 }
 
 .action-button {
-  width: 26%;
   margin-top: 1%;
 }
 
-.search-container {
-  background-color: #171717;
+.search-button {
+  background-color: #4d4d4d;
+  width: 100%;
 }
 
 .hidden {
   display: none;
 }
+
+.nav-wrapper {
+  display: flex;
+  justify-content: space-between;
+  background-color: #171717 !important;
+}
+
+nav {
+  box-shadow: none;
+}
+
 
 
 
