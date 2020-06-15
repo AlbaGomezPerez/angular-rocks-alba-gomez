@@ -7,12 +7,7 @@ import { AppComponent } from './app.component';
 import { BandsComponent} from "./bands/bands.component";
 import { BandCardComponent} from "./bandCard/bandCard.component";
 import {NewBandComponent} from "./newBand/newBand.component";
-import {PruebaComponent} from "./prueba/prueba.component";
 import {FormsModule} from "@angular/forms";
-// import {ReactiveFormsModule} from "@angular/forms";
-// import {SafeUrlPipe} from "./pipes/safeUrl.pipe";
-
-
 
 
 @NgModule({
@@ -20,16 +15,13 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     BandsComponent,
     BandCardComponent,
-    NewBandComponent,
-    PruebaComponent,
-    // SafeUrlPipe
+    NewBandComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule
-    // ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

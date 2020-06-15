@@ -31,12 +31,17 @@ export class NewBandComponent implements OnInit {
 
   //datos formulario
   getDataForm () {
+    const defaultImage = "https://concepto.de/wp-content/uploads/2018/09/rock-e1536060138214.jpg";
     this.newBand.id = parseInt(this.idBand(100, 1000000).toFixed(0)) ;
-
     this.allRockBands.push(this.newBand);
 
+    if(this.newBand.image === '') {
+      return (
+        this.newBand.image = defaultImage,
+        this.newBand.name = "Band Name"
+      )
+    }
     this.updateDatabands(this.allRockBands);
-    console.log(this.allRockBands);
   }
 
 //recoge los datos servicio
@@ -44,7 +49,6 @@ export class NewBandComponent implements OnInit {
     this.bandsService.getBands().subscribe(bands => {
       this.allRockBands = bands;
     });
-    console.log('on');
   }
 
   //sube y actualiza los datos
@@ -53,10 +57,12 @@ export class NewBandComponent implements OnInit {
       next: (bands: Array<Band>) => {
         // this.bandsService.getBands();
         this.allRockBands = bands;
-        console.log('sube datos');
       }
     });
   }
+
+
+
 }
 
 
