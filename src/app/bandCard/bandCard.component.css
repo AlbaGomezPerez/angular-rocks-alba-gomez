@@ -90,6 +90,9 @@ iframe {
 .data-band {
   margin-bottom: 4%;
 }
+.card {
+  box-shadow: none;
+}
 
 
 

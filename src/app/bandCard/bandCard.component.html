@@ -3,17 +3,17 @@
   <div class="">
     <div class="row">
       <div class="">
-        <div class="card circle col s12 m7 l6 offset-l3" [ngStyle]="{'background-image': './back.jpg' }">
+        <div class="card circle col s12 m10 l6 offset-l3 offset-m1" [ngStyle]="{'background-image': './back.jpg' }">
           <a routerLink="/list" class="waves-effect waves-light btn back-button">
             <i class="material-icons back left">keyboard_backspace</i>
             Go back</a>
           <span class="card-title">{{band.name}}
                         </span>
-          <div class="center col l8 data-container">
+          <div class="center col m6 l8 data-container">
             <img class="band-image" [src]="band.image" alt="band">
           </div>
           <div class="card-image">
-            <div class="card-contain">
+            <div class="card-contain col s12 m6 l4">
               <span class="btn-text waves-effect waves-light btn">Country: <i class="material-icons right">location_on</i></span>
               <span class="center data-band">{{band.country}}</span>
               <span class="btn-text waves-effect waves-light btn">Video's song:<i class="material-icons right">music_note</i></span>
