@@ -52,7 +52,6 @@ export class BandsComponent implements OnInit {
    removeBand(event) :void{
     let idBand = event.target.id;
     const filteredBands = this.allRockBands.filter(band => {
-      console.log('1. filtrado array');
       return band.id !== parseInt(idBand, 10);
     });
     this.updateDatabands(filteredBands);
@@ -68,7 +67,6 @@ export class BandsComponent implements OnInit {
   updateDatabands(updatedArrayBand: Array<Band>) {
     this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
-        console.log('2. put list');
         this.allRockBands = bands;
         this.noFilteredBands = bands;
       }
