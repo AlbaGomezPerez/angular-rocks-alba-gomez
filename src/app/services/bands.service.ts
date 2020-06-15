@@ -33,8 +33,11 @@ export class BandsService {
 
   updateBands(bands: Array<Band>) {
     console.log('3. put service');
+      return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands)).subscribe(originalBands => {
+        this.bandsSource.next(originalBands);
+        return this.getBands();
+      })
 
-      return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands))
   }
 }
 

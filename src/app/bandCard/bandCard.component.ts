@@ -21,7 +21,7 @@ export class BandCardComponent implements OnInit{
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer) {
 
-    this.idBand = this.route.snapshot.params['id']
+    this.idBand = this.route.snapshot.params['id'];
     this.dangerousUrl = 'javascript:alert("Hi there")';
     this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
@@ -29,6 +29,7 @@ export class BandCardComponent implements OnInit{
 
   ngOnInit() {
     this.bandsService.getBands().subscribe(bands => {
+      console.log(bands);
       this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
       console.log(this.band.image);
       this.updateVideoUrl()
