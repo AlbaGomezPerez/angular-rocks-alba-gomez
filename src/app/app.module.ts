@@ -4,9 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { ListComponent} from "./list/list.component";
-import { CardComponent} from "./card/card.component";
-import {FormComponent} from "./form/form.component";
+import { BandsComponent} from "./bands/bands.component";
+import { BandCardComponent} from "./bandCard/bandCard.component";
+import {NewBandComponent} from "./newBand/newBand.component";
 import {PruebaComponent} from "./prueba/prueba.component";
 import {FormsModule} from "@angular/forms";
 // import {ReactiveFormsModule} from "@angular/forms";
@@ -18,9 +18,9 @@ import {FormsModule} from "@angular/forms";
 @NgModule({
   declarations: [
     AppComponent,
-    ListComponent,
-    CardComponent,
-    FormComponent,
+    BandsComponent,
+    BandCardComponent,
+    NewBandComponent,
     PruebaComponent,
     // SafeUrlPipe
   ],

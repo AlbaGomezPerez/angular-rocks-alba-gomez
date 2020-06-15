@@ -20,19 +20,22 @@ export class BandsService {
 
   getBands(){
     this.currentBands.subscribe(bands=> {
+      console.log('5. current');
       if(bands.length == 0) {
         this.http.get<Array<Band>>(this.dataUrl).subscribe(originalBands => {
           this.bandsSource.next(originalBands);
         })
       }
     })
+    console.log('4. current');
     return this.currentBands;
   }
 
   updateBands(bands: Array<Band>) {
-    return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands));
-  }
+    console.log('3. put service');
 
+      return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands))
+  }
 }
 
 

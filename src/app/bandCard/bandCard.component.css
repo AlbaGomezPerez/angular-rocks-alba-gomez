@@ -43,7 +43,9 @@
 
 iframe {
   border: none;
-  height: 300px;
+  height: 400px;
+  margin-top: 1%;
+  width: 100%;
 }
 
 .card-contain {

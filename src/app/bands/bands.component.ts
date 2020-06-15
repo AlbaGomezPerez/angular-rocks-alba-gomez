@@ -5,14 +5,14 @@ import BandsJson from "src/assets/json/bands.json";
 import {Subject} from "rxjs";
 
 /**
- * Show the list
+ * Show the bands
  */
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  templateUrl: './bands.component.html',
+  styleUrls: ['./bands.component.css']
 })
-export class ListComponent implements OnInit {
+export class BandsComponent implements OnInit {
   constructor(public bandsService: BandsService) {}
   allRockBands: Array<Band> = [];
   originalBandsList: Array<Band> = BandsJson;
@@ -38,11 +38,10 @@ export class ListComponent implements OnInit {
 
    removeBand(event) :void{
     let idBand = event.target.id;
-
     const filteredBands = this.allRockBands.filter(band => {
+      console.log('1. filtrado array');
       return band.id !== parseInt(idBand, 10);
     });
-    console.log(filteredBands);
     this.updateDatabands(filteredBands);
   }
 
@@ -54,9 +53,9 @@ export class ListComponent implements OnInit {
   //filtered is an array with bands (updated bands, less or more)
   //next: indicate the type of response and update the state again
   updateDatabands(updatedArrayBand: Array<Band>) {
-
     this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
+        console.log('2. put list');
         this.allRockBands = bands;
         this.noFilteredBands = bands;
       }

@@ -3,14 +3,14 @@ import {BandsService, Band} from "../services/bands.service";
 
 
 /**
- * Show the list
+ * Show the bands
  */
 @Component({
   selector: 'form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css']
+  templateUrl: './newBand.component.html',
+  styleUrls: ['./newBand.component.css']
 })
-export class FormComponent implements OnInit {
+export class NewBandComponent implements OnInit {
   allRockBands: Array<Band>;
 
   constructor (public bandsService: BandsService) {}
@@ -44,12 +44,14 @@ export class FormComponent implements OnInit {
     this.bandsService.getBands().subscribe(bands => {
       this.allRockBands = bands;
     });
+    console.log('on');
   }
 
   //sube y actualiza los datos
   updateDatabands(updatedArrayBand: Array<Band>) {
     this.bandsService.updateBands(updatedArrayBand).subscribe({
       next: (bands: Array<Band>) => {
+        // this.bandsService.getBands();
         this.allRockBands = bands;
         console.log('sube datos');
       }

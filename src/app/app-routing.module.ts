@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ListComponent} from "./list/list.component";
-import {CardComponent} from "./card/card.component";
-import {FormComponent} from "./form/form.component";
+import {BandsComponent} from "./bands/bands.component";
+import {BandCardComponent} from "./bandCard/bandCard.component";
+import {NewBandComponent} from "./newBand/newBand.component";
 import {PruebaComponent} from "./prueba/prueba.component";
 import {AppComponent} from "./app.component";
 
 
 const routes: Routes = [
-  {path: '', component: ListComponent, pathMatch: 'full'},
-  {path: 'list', component: ListComponent},
-  {path: 'band/:id', component: CardComponent, pathMatch: 'prefix'},
-  {path: 'form', component: FormComponent},
+  {path: '', component: BandsComponent, pathMatch: 'full'},
+  {path: 'list', component: BandsComponent},
+  {path: 'band/:id', component: BandCardComponent, pathMatch: 'prefix'},
+  {path: 'form', component: NewBandComponent},
   {path: 'prueba', component: PruebaComponent},
   {path: '**', component: AppComponent }
 ];

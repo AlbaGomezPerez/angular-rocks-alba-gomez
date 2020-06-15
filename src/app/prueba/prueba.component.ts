@@ -1,9 +1,9 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { ListComponent} from "../list/list.component";
+import { BandsComponent} from "../bands/bands.component";
 
 
 /**
- * Show the list
+ * Show the bands
  */
 @Component({
   selector: 'prueba',
@@ -11,7 +11,7 @@ import { ListComponent} from "../list/list.component";
   styleUrls: ['./prueba.component.css']
 })
 export class PruebaComponent implements OnInit{
-  allRockbands: ListComponent;
+  allRockbands: BandsComponent;
   @Input() title: string;
   @Input() newName: string;
   @Output() send: EventEmitter<string> = new EventEmitter<string>();
