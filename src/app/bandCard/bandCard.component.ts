@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Band, BandsService} from "../services/bands.service";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
+import {SeoService} from "../services/seo.service";
 
 @Component({
   selector: 'card-band',
@@ -21,10 +22,12 @@ export class BandCardComponent implements OnInit{
   videoUrl: any;
 
 
+
   constructor(
     public bandsService: BandsService,
     private route: ActivatedRoute,
-    private sanitizer: DomSanitizer) {
+    private sanitizer: DomSanitizer,
+    private seoService: SeoService) {
 
     this.idBand = this.route.snapshot.params['id'];
     this.dangerousUrl = '';
@@ -40,7 +43,8 @@ export class BandCardComponent implements OnInit{
       this.bandsService.getBands().subscribe(bands => {
         this.bandsService.bandsSource.next.bind(bands);
         this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
-        this.updateVideoUrl()
+        this.updateVideoUrl();
+        this.generateCardTags();
       });
     // }
 
@@ -51,6 +55,17 @@ export class BandCardComponent implements OnInit{
    */
   updateVideoUrl() {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.band.video);
+  }
+
+  /**
+   * Get keywords from the seoService
+   */
+  generateCardTags() {
+    this.seoService.generateCardTags({
+      title: "Ng Seo - Rock bands website",
+      description: "70s Rock bands",
+      slug: 'Rock bands'
+    }, this.band);
   }
 
 }

@@ -7,7 +7,7 @@ import {SeoService} from "../services/seo.service";
 
 
 /**
- //Show the list with the all rock bands
+ * Show the list with the all rock bands
  */
 @Component({
   selector: 'app-list',
@@ -17,9 +17,8 @@ import {SeoService} from "../services/seo.service";
 export class BandsComponent implements OnInit {
   constructor(
     public bandsService: BandsService,
-    private title: Title,
-    private seo: SeoService,
-    private meta: Meta
+    // private title: Title,
+    private seoService: SeoService,
   ){
   }
 
@@ -34,37 +33,36 @@ export class BandsComponent implements OnInit {
   searchValue: string;
   noFilteredBands: Array<Band>;
 
-  // getMetaTags () {
-  //   let els: HTMLMetaElement [] = this.meta.getTags ('band.name');
-  //   els.forEach (el => {
-  //     console.log (el);
-  //   });
-  // }
-
   ngOnInit() {
     let title: string = "Ng Seo - Rock bands website";
-    this.title.setTitle(title);
-
-    this.seo.generateTags({
-      title: "Ng Seo - Rock bands website",
-      description: "70s Rock bands",
-      slug: 'Rock bands',
-      image: this.allRockBands
-    });
+    // this.title.setTitle(title);
     this.fetchBands();
   }
 
   /**
-   //Get data bands from the data base
-   //Update allRockBands and noFilteredBands with the response
+   * Get keywords from the seoService
+   */
+  generateTags() {
+    this.seoService.generateTags({
+      title: "Ng Seo - Rock bands website",
+      description: "70s Rock bands",
+      slug: 'Rock bands'
+    }, this.allRockBands);
+  }
+
+  /**
+   * Get data bands from the data base
+   * Update allRockBands and noFilteredBands with the response
    */
   private fetchBands() {
       this.bandsService
         .getBands()
         .subscribe((bands: Array<Band>) => {
+          console.log(bands);
           this.bandsService.bandsSource.next.bind(bands);
           this.allRockBands = bands;
           this.noFilteredBands = bands;
+          this.generateTags();
         });
   }
 
@@ -81,15 +79,15 @@ export class BandsComponent implements OnInit {
   }
 
   /**
-   //Call updateDataBands to update data base with original bands
+   * Call updateDataBands to update data base with original bands
    */
   restoreOriginalsBands() {
     this.updateDatabands(this.originalBandsList);
   }
 
   /**
-   *Update data base and update state
-   *@param updatedArrayBand: objects array (Band type)
+   * Update data base and update state
+   * @param updatedArrayBand: objects array (Band type)
    * next: indicate the type of response and update the state again
    */
   updateDatabands(updatedArrayBand: Array<Band>) {
@@ -97,6 +95,7 @@ export class BandsComponent implements OnInit {
         this.bandsService.bandsSource.next.bind(bands);
         this.allRockBands = bands;
         this.noFilteredBands = bands;
+        this.generateTags();
       });
   }
 
