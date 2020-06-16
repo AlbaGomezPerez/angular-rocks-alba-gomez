@@ -8,6 +8,11 @@ import {DomSanitizer} from "@angular/platform-browser";
   templateUrl: './bandCard.component.html',
   styleUrls: ['./bandCard.component.css']
 })
+
+
+/**
+//Show the list with the allRockBands with their values and percentage in a barchart
+*/
 export class BandCardComponent implements OnInit{
   band: Band;
   idBand: string;

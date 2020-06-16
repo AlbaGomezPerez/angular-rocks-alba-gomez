@@ -4,7 +4,7 @@
 </div>
 
 
-<div  routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
+<div routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
 true}" class="bands">
 
   <nav>
@@ -12,7 +12,8 @@ true}" class="bands">
       <ul class="col l10 offset-l1 offset-m2 offset-s1 m8 s12">
         <li class="col l3 s5 m3">
           <a>
-            <span class="btn-text waves-effect waves-light btn action-button" routerLink="/form">Create new rock band</span>
+            <span class="btn-text waves-effect waves-light btn action-button"
+                  routerLink="/form">Create new rock band</span>
           </a>
         </li>
         <li class="col l3 s5 m3">
@@ -38,27 +39,27 @@ true}" class="bands">
       </ul>
     </div>
   </nav>
-<div class="container center"
+  <div class="container center"
        *ngFor="let band of allRockBands">
-  <div class="row">
-    <div class="col s12 m8 l6 offset-l3 offset-m2">
-      <div class="card circle">
-        <div class="card-image circle">
-          <img class="circle" src="{{band.image}}" alt="band">
-        </div>
-        <div class="card-action">
-          <span class="card-title">{{band.name}}</span>
-          <div>
-          <a [routerLink]="['/band', band.id ]">
-            <i class="material-icons">info</i>
-          </a>
-          <i class="material-icons remove" (click)="removeBand($event)" id="{{band.id}}">remove_circle</i>
+    <div class="row">
+      <div class="col s12 m8 l6 offset-l3 offset-m2">
+        <div class="card circle">
+          <div class="card-image circle">
+            <img class="circle" src="{{band.image}}" alt="band">
+          </div>
+          <div class="card-action">
+            <span class="card-title">{{band.name}}</span>
+            <div>
+              <a [routerLink]="['/band', band.id ]">
+                <i class="material-icons">info</i>
+              </a>
+              <i class="material-icons remove" (click)="removeBand($event)" id="{{band.id}}">remove_circle</i>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <div id="modal1" class="modal">

@@ -1,5 +1,6 @@
 import {assertPlatform, Injectable} from '@angular/core';
 import {Meta} from  '@angular/platform-browser';
+import {Band, BandsService} from "../services/bands.service";
 
 
 @Injectable({
@@ -28,7 +29,10 @@ export class SeoService {
         {name: 'description', content: config.description},
         {name: 'slug', content: `localhost/${config.slug}`},
       ]);
+
     }
+
+
 }
 
 
