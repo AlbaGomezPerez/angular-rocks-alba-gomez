@@ -11,7 +11,7 @@ import {DomSanitizer} from "@angular/platform-browser";
 
 
 /**
-//Show the list with the allRockBands with their values and percentage in a barchart
+  *Show the detail band card
 */
 export class BandCardComponent implements OnInit{
   band: Band;
@@ -32,6 +32,9 @@ export class BandCardComponent implements OnInit{
 
   }
 
+  /**
+   *Filter bands by the id and get selected band
+   */
   ngOnInit() {
     // if(this.bandsService == undefined) {
       this.bandsService.getBands().subscribe(bands => {
@@ -43,6 +46,9 @@ export class BandCardComponent implements OnInit{
 
   }
 
+  /**
+   *Add bypassSecurityTrustResourceUrl to iframe tag
+   */
   updateVideoUrl() {
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.band.video);
   }

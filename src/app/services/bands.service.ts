@@ -10,6 +10,7 @@ import {BehaviorSubject} from "rxjs";
 /**
  * Service to get data from the API
  */
+
 export class BandsService {
   constructor(private http: HttpClient) {}
 
@@ -18,6 +19,9 @@ export class BandsService {
   bandsSource = new BehaviorSubject([]);
   currentBands = this.bandsSource.asObservable();
 
+  /**
+   *Get bands from data base
+   */
   getBands(){
       if( this.bandsSource.getValue().length == 0)
         return this.http.get<Array<Band>>(this.dataUrl);
@@ -25,6 +29,10 @@ export class BandsService {
         return this.currentBands;
   }
 
+  /**
+   *Do the put to the data base
+   *@param bands: response (band type array)
+   */
   updateBands(bands: Array<Band>) {
       return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands));
   }
@@ -32,7 +40,7 @@ export class BandsService {
 
 
 /**
- * Define data types to bands
+ * Define the Band object type
  */
 export interface Band {
   country: string;

@@ -3,7 +3,7 @@ import {BandsService, Band} from "../services/bands.service";
 
 
 /**
- * Show the bands
+ * Show the form to create a new band
  */
 @Component({
   selector: 'form',
@@ -25,11 +25,16 @@ export class NewBandComponent implements OnInit {
     website: '',
   };
 
+  /**
+   *Generate random id
+   */
   idBand(min, max) {
     return Math.random() * (max - min) + min;
   }
 
-  //datos formulario
+  /**
+   *Get data band created by the user
+   */
   getDataForm () {
     console.log(this.allRockBands);
     const defaultImage = "https://concepto.de/wp-content/uploads/2018/09/rock-e1536060138214.jpg";
@@ -47,7 +52,9 @@ export class NewBandComponent implements OnInit {
     this.updateDatabands(this.allRockBands);
   }
 
-//recoge los datos servicio
+  /**
+   *Update allRockBands and bandsService
+   */
   ngOnInit () {
    console.log(this.allRockBands);
     // if(this.allRockBands == undefined) {
@@ -58,7 +65,11 @@ export class NewBandComponent implements OnInit {
     // }
   }
 
-  //sube y actualiza los datos
+  /**
+   *Update data base and update state
+   *@param updatedArrayBand: objects array (Band type)
+   * next: indicate the type of response and update the state again
+   */
   updateDatabands(updatedArrayBand: Array<Band>) {
     console.log('hola');
       this.bandsService.updateBands(updatedArrayBand).subscribe({
