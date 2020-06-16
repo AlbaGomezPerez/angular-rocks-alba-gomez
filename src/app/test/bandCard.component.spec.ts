@@ -16,14 +16,6 @@ describe('AppComponent', () => {
   }));
 
 
-  it('should create the list', () => {
-    const list = fixture.componentInstance;
-    expect(list).toBeTruthy();
-  });
-
-
-
-
 });
 
 

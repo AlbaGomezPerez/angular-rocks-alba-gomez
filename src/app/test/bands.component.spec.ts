@@ -1,22 +1,102 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { BandsComponent } from '../bands/bands.component';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {BandsComponent} from '../bands/bands.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {Observable, of} from "rxjs";
+import {BandsService, Band} from "../services/bands.service";
+import {AppComponent} from "../app.component";
 
-describe('AppComponent', () => {
+describe('BandsComponent', () => {
+
+  let fixture: ComponentFixture<BandsComponent>;
+  let compiled;
+  let bandsComponent: BandsComponent;
+  let jsonService: BandsService;
+  let apiResponse: Band;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        HttpClientTestingModule,
       ],
       declarations: [
         BandsComponent
       ],
+      providers: [
+        BandsService
+      ]
     }).compileComponents();
+    fixture = TestBed.createComponent(BandsComponent);
+    compiled = fixture.nativeElement;
+
+    jsonService = TestBed.get(BandsService);
+    // bandsComponent = new BandsComponent(jsonService);
+  //
+  //     Band = [
+  //       {
+  //         id: 1,
+  //         name: "The Rolling Stones",
+  //         country: "United Kingdom",
+  //         website: "https://rollingstones.com/",
+  //         members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
+  //         image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
+  //         video: "https://www.youtube.com/embed/qEuV82GqQnE",
+  //         title: "Ride 'em on down"
+  //       },
+  //       {
+  //         id: 2,
+  //         name: "Led Zeppelin",
+  //         country: "United Kingdom",
+  //         website: "https://lz50.ledzeppelin.com/?ref=https://es.wikipedia.org/",
+  //         members: "Jimmy Page, Robert Plant, John Paul Jones, John Bonham",
+  //         image: "https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg",
+  //         video: "https://www.youtube.com/embed/HQmmM_qwG4k",
+  //         title: "Whole lotta love"
+  //       },
+  //       {
+  //         id: 3,
+  //         name: "Queen",
+  //         country: "United Kingdom",
+  //         website: "http://www.queenonline.com/es",
+  //         members: "John Deacon, Freddie Mercury, Brian May, Roger Taylor",
+  //         image: "https://www.biografiasyvidas.com/biografia/q/fotos/queen.jpg",
+  //         video: "https://www.youtube.com/embed/kijpcUv-b8M",
+  //         title: "Somebody to love"
+  //       }
+  //     ] as Array<Band>;
+  //
+  //   spyOn(jsonService, 'getJson').and.returnValue(of(apiResponse));
+  //   listComponent.ngOnInit();
   }));
+
+
+  // it('Should show nav with two buttons and only one search input', () => {
+  //   fixture.detectChanges();
+  //   const button = compiled.querySelectorAll('.action-button');
+  //   expect(button.textContent)[0].toContain("Create new rock band");
+  //
+  //   fixture.detectChanges();
+  //   expect(button.textContent)[1].toContain("Restore rock bands");
+  // });
+
+  it('should show the nav with its search input and buttons', () => {
+    const nav = compiled.querySelector('.nav-wrapper');
+    expect(nav).toBeTruthy();
+
+    const createButton = compiled.querySelectorAll('.action-button');
+    expect(createButton[0].textContent).toContain("Create new rock band");
+    expect(createButton[1].textContent).toContain("Restore rock bands");
+
+    const inputSearch = compiled.querySelector('#search');
+    expect(inputSearch).toBeTruthy();
+  });
 });
 
+
+
 //TESTS
-    //Render nav/header
-    //Button create (link form)
-    //Button restore
     //bands list (crear una lista falsa y mirar lenght y el contenido)
+      //imagen
+      //nombre
+      //iconos con sus links

@@ -15,7 +15,7 @@ export class SeoService {
 
     generateTags(config) {
       config = {
-        title: 'Rock bands website',
+        title: 'Angular Rocks',
         description: '70s Rock bands',
         image: '',
         slug:'',

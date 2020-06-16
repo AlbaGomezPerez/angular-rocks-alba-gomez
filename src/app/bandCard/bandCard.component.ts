@@ -22,23 +22,24 @@ export class BandCardComponent implements OnInit{
     private sanitizer: DomSanitizer) {
 
     this.idBand = this.route.snapshot.params['id'];
-    this.dangerousUrl = 'javascript:alert("Hi there")';
+    this.dangerousUrl = '';
     this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
 
   }
 
   ngOnInit() {
-    this.bandsService.getBands().subscribe(bands => {
+    // if(this.bandsService == undefined) {
+      this.bandsService.getBands().subscribe(bands => {
+        this.bandsService.bandsSource.next.bind(bands);
+        this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
+        this.updateVideoUrl()
+      });
+    // }
 
-      this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
-      this.updateVideoUrl()
-    });
   }
 
   updateVideoUrl() {
-    this.band.video;
-    this.videoUrl =
-      this.sanitizer.bypassSecurityTrustResourceUrl(this.band.video);
+    this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.band.video);
   }
 
 }
