@@ -5,7 +5,6 @@
 
 <div routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
 true}" class="bands">
-
   <nav>
     <div class="nav-wrapper row">
       <ul class="col l10 offset-l1 offset-m2 offset-s1 m8 s12">
@@ -40,7 +39,7 @@ true}" class="bands">
   </nav>
   <div class="container center"
        *ngFor="let band of allRockBands">
-    <div class="row">
+    <div class="row band-row">
       <div class="col s12 m8 l6 offset-l3 offset-m2">
         <div class="card circle">
           <div class="card-image circle">
@@ -49,7 +48,7 @@ true}" class="bands">
           <div class="card-action">
             <span class="card-title">{{band.name}}</span>
             <div>
-              <a [routerLink]="['/band', band.id ]">
+              <a class="card-detail" [routerLink]="['/band', band.id ]">
                 <i class="material-icons">info</i>
               </a>
               <i class="material-icons remove" (click)="removeBand($event)" id="{{band.id}}">remove_circle</i>
@@ -61,11 +60,6 @@ true}" class="bands">
   </div>
 </div>
 
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Modal Header</h4>
-  </div>
-</div>
 
 <router-outlet></router-outlet>
 

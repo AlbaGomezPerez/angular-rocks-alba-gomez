@@ -89,10 +89,31 @@ fdescribe('BandsComponent', () => {
     expect(inputSearch).toBeTruthy();
   });
 
-  fit('should show list with rows', () => {
+  it('should show bands list', () => {
     fixture.detectChanges();
-    console.info('foo');
-    expect(compiled.querySelectorAll('.row').length).toEqual(3);
+    const band = compiled.querySelectorAll('.band-row');
+    expect(band.length).toEqual(3);
+
+    const bandName = compiled.querySelectorAll('.card-title');
+    expect(bandName[0].textContent).toContain("The Rolling Stones");
+    expect(bandName[1].textContent).toContain("Led Zeppelin");
+    expect(bandName[2].textContent).toContain("Queen");
+
+    const imageName = compiled.querySelectorAll('.card-image img');
+    expect(imageName[0].getAttribute('src')).toContain('https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD');
+    expect(imageName[1].getAttribute('src')).toContain('https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg');
+    expect(imageName[2].getAttribute('src')).toContain('https://www.biografiasyvidas.com/biografia/q/fotos/queen.jpg');
+
+    const removeband = compiled.querySelectorAll('.remove');
+    expect(removeband[0].getAttribute('id')).toContain("1");
+    expect(removeband[1].getAttribute('id')).toContain("2");
+    expect(removeband[2].getAttribute('id')).toContain("3");
+
+    // const detailBand = compiled.querySelectorAll('.card-detail');
+    // expect(detailBand[0].getAttribute('routerLink')).toContain('/band1');
+    // expect(detailBand[1].getAttribute('routerLink')).toContain('/band2');
+    // expect(detailBand[2].getAttribute('routerLink')).toContain('/band3');
+
   });
 });
 
