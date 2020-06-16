@@ -10,6 +10,21 @@ true}" class="bands">
   <nav>
     <div class="nav-wrapper row">
       <ul class="col l10 offset-l1 offset-m2 offset-s1 m8 s12">
+        <li class="col l6 s11 m6">
+          <a>
+          <span class="btn-text waves-effect waves-light btn search-button">
+            <input
+              placeholder="Search band"
+              class="input"
+              id="search"
+              type="search"
+              required
+              [(ngModel)]="searchValue"
+              (ngModelChange)="searchBands()">
+            <label class="label-icon" for="search"></label>
+          </span>
+          </a>
+        </li>
         <li class="col l3 s5 m3">
           <a>
             <span class="btn-text waves-effect waves-light btn action-button"
@@ -19,21 +34,6 @@ true}" class="bands">
         <li class="col l3 s5 m3">
           <a (click)="restoreOriginalsBands()">
             <span class="btn-text waves-effect waves-light btn action-button">Restore rock bands</span>
-          </a>
-        </li>
-        <li class="col l6 s11 m6">
-          <a>
-          <span class="btn-text waves-effect waves-light btn search-button">
-            <input
-              placeholder="Search band"
-              class="input center"
-              id="search"
-              type="search"
-              required
-              [(ngModel)]="searchValue"
-              (ngModelChange)="searchBands()">
-            <label class="label-icon" for="search"></label>
-          </span>
           </a>
         </li>
       </ul>
