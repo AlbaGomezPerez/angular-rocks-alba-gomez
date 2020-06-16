@@ -4,7 +4,7 @@ import {BandsComponent} from '../bands/bands.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Observable, of} from "rxjs";
 import {BandsService, Band} from "../services/bands.service";
-import {AppComponent} from "../app.component";
+
 
 describe('BandsComponent', () => {
 
@@ -12,7 +12,7 @@ describe('BandsComponent', () => {
   let compiled;
   let bandsComponent: BandsComponent;
   let jsonService: BandsService;
-  let apiResponse: Band;
+  let apiResponse: Array<Band>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,7 +33,7 @@ describe('BandsComponent', () => {
     jsonService = TestBed.get(BandsService);
     // bandsComponent = new BandsComponent(jsonService);
   //
-  //     Band = [
+  //     const allRockBands = [
   //       {
   //         id: 1,
   //         name: "The Rolling Stones",
@@ -65,20 +65,11 @@ describe('BandsComponent', () => {
   //         title: "Somebody to love"
   //       }
   //     ] as Array<Band>;
-  //
-  //   spyOn(jsonService, 'getJson').and.returnValue(of(apiResponse));
-  //   listComponent.ngOnInit();
+  // //
+  //   spyOn(jsonService, 'getBands').and.returnValue(of(apiResponse));
+  //   bandsComponent.ngOnInit();
   }));
 
-
-  // it('Should show nav with two buttons and only one search input', () => {
-  //   fixture.detectChanges();
-  //   const button = compiled.querySelectorAll('.action-button');
-  //   expect(button.textContent)[0].toContain("Create new rock band");
-  //
-  //   fixture.detectChanges();
-  //   expect(button.textContent)[1].toContain("Restore rock bands");
-  // });
 
   it('should show the nav with its search input and buttons', () => {
     const nav = compiled.querySelector('.nav-wrapper');
@@ -90,6 +81,11 @@ describe('BandsComponent', () => {
 
     const inputSearch = compiled.querySelector('#search');
     expect(inputSearch).toBeTruthy();
+  });
+
+  it('should show list with rows', () => {
+    fixture.detectChanges();
+    expect(compiled.querySelectorAll('.row').length).toEqual(1);
   });
 });
 

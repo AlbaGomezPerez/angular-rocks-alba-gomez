@@ -2,13 +2,17 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BandCardComponent} from '../bandCard/bandCard.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {BandsService} from "../services/bands.service";
+import {Observable, of} from "rxjs";
+import {BandsService, Band} from "../services/bands.service";
+import {BandsComponent} from "../bands/bands.component";
 
 describe('BandsComponent', () => {
 
   let fixture: ComponentFixture<BandCardComponent>;
   let compiled;
   let jsonService: BandsService;
+  let bandCardComponent: BandCardComponent;
+  let apiResponse: Array<Band>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,6 +32,22 @@ describe('BandsComponent', () => {
 
     jsonService = TestBed.get(BandsService);
 
+    const band =
+     {
+            id: 1,
+            name: "The Rolling Stones",
+            country: "United Kingdom",
+            website: "https://rollingstones.com/",
+            members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
+            image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
+            video: "https://www.youtube.com/embed/qEuV82GqQnE",
+            title: "Ride 'em on down"
+          } as Band;
+
+    const idBand = 1;
+
+      // spyOn(jsonService, 'getBands').and.returnValue(of(apiResponse));
+      // bandCardComponent.ngOnInit();
   }));
 
   it('should show the detail card band', () => {
