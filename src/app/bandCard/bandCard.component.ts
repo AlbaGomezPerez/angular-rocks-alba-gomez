@@ -15,6 +15,7 @@ import {SeoService} from "../services/seo.service";
   *Show the detail band card
 */
 export class BandCardComponent implements OnInit{
+  allRockBands: Array<Band>;
   band: Band;
   idBand: string;
   dangerousUrl: string;
@@ -40,11 +41,18 @@ export class BandCardComponent implements OnInit{
    */
   ngOnInit() {
     // if(this.bandsService == undefined) {
-      this.bandsService.getBands().subscribe(bands => {
+    let bandList: Array<Band> = [];
+
+    this.bandsService.getBands().subscribe(bands => {
         this.bandsService.bandsSource.next.bind(bands);
+        this.allRockBands = bands;
+
         this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
+
+        bandList.push(this.band);
+
         this.updateVideoUrl();
-        this.generateCardTags();
+        this.generateCardTags(bandList);
       });
     // }
 
@@ -60,12 +68,12 @@ export class BandCardComponent implements OnInit{
   /**
    * Get keywords from the seoService
    */
-  generateCardTags() {
-    this.seoService.generateCardTags({
+  generateCardTags(bandList) {
+    this.seoService.generateTags({
       title: "Ng Seo - Rock bands website",
       description: "70s Rock bands",
       slug: 'Rock bands'
-    }, this.band);
+    }, bandList);
   }
 
 }

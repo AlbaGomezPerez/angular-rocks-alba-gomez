@@ -8,7 +8,7 @@ import {SeoService} from "../services/seo.service";
 import {Title} from "@angular/platform-browser";
 
 
-fdescribe('BandsComponent', () => {
+describe('BandsComponent', () => {
 
   let fixture: ComponentFixture<BandsComponent>;
   let compiled;
@@ -70,7 +70,6 @@ fdescribe('BandsComponent', () => {
         }
       ] as Array<Band>;
 
-    //spyOn(bandsService, 'getBands').and.returnValue(of(allRockBands));
     bandsService.bandsSource.next(allRockBands);
     bandsComponent = new BandsComponent(bandsService, seoService);
     bandsComponent.ngOnInit();
@@ -89,7 +88,7 @@ fdescribe('BandsComponent', () => {
     expect(inputSearch).toBeTruthy();
   });
 
-  it('should show bands list', () => {
+  it('should show bands list with content', () => {
     fixture.detectChanges();
     const band = compiled.querySelectorAll('.band-row');
     expect(band.length).toEqual(3);
@@ -109,12 +108,32 @@ fdescribe('BandsComponent', () => {
     expect(removeband[1].getAttribute('id')).toContain("2");
     expect(removeband[2].getAttribute('id')).toContain("3");
 
-    // const detailBand = compiled.querySelectorAll('.card-detail');
-    // expect(detailBand[0].getAttribute('routerLink')).toContain('/band1');
-    // expect(detailBand[1].getAttribute('routerLink')).toContain('/band2');
-    // expect(detailBand[2].getAttribute('routerLink')).toContain('/band3');
+    const detailBand = compiled.querySelectorAll('.card-detail');
 
+    expect(detailBand[0].getAttribute('href')).toContain("/band/1");
+    expect(detailBand[1].getAttribute('href')).toContain('/band/2');
+    expect(detailBand[2].getAttribute('href')).toContain('/band/3');
   });
+
+  it('should show filtered bands by lin', () => {
+    fixture.detectChanges();
+
+    bandsComponent.searchValue = compiled.querySelector('#search').innerHTML = "lin";
+    const filteredBand = compiled.querySelectorAll('.card-title');
+    expect(filteredBand[0].textContent).toContain("The Rolling Stones");
+    expect(filteredBand[1].textContent).toContain("Led Zeppelin");
+  });
+
+  it('should show filtered bands by en', () => {
+    fixture.detectChanges();
+
+    bandsComponent.searchValue = "Z";
+
+    // bandsComponent.searchValue = compiled.querySelector('#search').innerHTML = "Z";
+    const filteredBand = compiled.querySelector('.card-title');
+    expect(filteredBand.textContent).toContain("Led Zeppelin");
+  });
+
 });
 
 
@@ -124,3 +143,4 @@ fdescribe('BandsComponent', () => {
       //imagen
       //nombre
       //iconos con sus links
+

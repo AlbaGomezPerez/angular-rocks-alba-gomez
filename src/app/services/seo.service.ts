@@ -17,8 +17,8 @@ export class SeoService {
    * Get allRockBands names and generate dinamic tags and default tags
    */
     generateTags(config, allRockBands) {
-    const allRockBandsNames = allRockBands.map(band => {
-      return band.name;
+    const allRockBandsData = allRockBands.map(band => {
+      return band.members + band.title + band.name;
     }).join(', ');
       config = {
         title: 'Angular Rocks',
@@ -29,35 +29,13 @@ export class SeoService {
       };
       this.meta.addTags([
         {name: 'keywords', content:
-            `rock, bands, band, ${allRockBandsNames}` },
+            `rock, bands, band, ${allRockBandsData}` },
         {name: 'title', content: config.title},
         {name: 'description', content: config.description},
         {name: 'slug', content: `localhost/${config.slug}`},
       ]);
     }
 
-  /**
-   * Get rockBand data (name, title and members) and generate dinamic tags and default tags
-   */
-  generateCardTags(config, rockBand) {
-    const rockBandName = rockBand.name;
-    const rockBandSong = rockBand.title;
-    const rockBandMembers = rockBand.members;
-    config = {
-      title: 'Angular Rocks',
-      description: '70s Rock bands',
-      image: '',
-      slug:'',
-      ...config
-    };
-    this.meta.addTags([
-      {name: 'keywords', content:
-          `rock, bands, band, ${rockBandName}, ${rockBandSong}, ${rockBandMembers}` },
-      {name: 'title', content: config.title},
-      {name: 'description', content: config.description},
-      {name: 'slug', content: `localhost/${config.slug}`},
-    ]);
-  }
 }
 
 

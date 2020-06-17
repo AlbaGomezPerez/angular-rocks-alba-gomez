@@ -4,15 +4,19 @@ import {BandCardComponent} from '../bandCard/bandCard.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {Observable, of} from "rxjs";
 import {BandsService, Band} from "../services/bands.service";
-import {BandsComponent} from "../bands/bands.component";
+import {SeoService} from "../services/seo.service";
+import {ActivatedRoute} from "@angular/router";
+import {DomSanitizer} from "@angular/platform-browser";
 
-describe('BandsComponent', () => {
+fdescribe('BandsComponent', () => {
 
   let fixture: ComponentFixture<BandCardComponent>;
   let compiled;
-  let jsonService: BandsService;
   let bandCardComponent: BandCardComponent;
-  let apiResponse: Array<Band>;
+  let bandsService: BandsService;
+  let seoService: SeoService;
+  let activatedRoute: ActivatedRoute;
+  let domSanitizer: DomSanitizer;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,30 +28,38 @@ describe('BandsComponent', () => {
         BandCardComponent
       ],
       providers: [
-        BandsService
+        BandsService,
+        SeoService
       ]
     }).compileComponents();
     fixture = TestBed.createComponent(BandCardComponent);
     compiled = fixture.nativeElement;
 
-    jsonService = TestBed.get(BandsService);
+    bandsService = TestBed.get(BandsService);
+    seoService = TestBed.get(BandsService);
 
-    const band =
-     {
-            id: 1,
-            name: "The Rolling Stones",
-            country: "United Kingdom",
-            website: "https://rollingstones.com/",
-            members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
-            image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
-            video: "https://www.youtube.com/embed/qEuV82GqQnE",
-            title: "Ride 'em on down"
-          } as Band;
 
-    const idBand = 1;
+    const rockBand = [
+       {
+        id: 1,
+        name: "The Rolling Stones",
+        country: "United Kingdom",
+        website: "https://rollingstones.com/",
+        members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
+        image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
+        video: "https://www.youtube.com/embed/qEuV82GqQnE",
+        title: "Ride 'em on down"
+      } as Band
+    ] as Array<Band>;
 
-      // spyOn(jsonService, 'getBands').and.returnValue(of(apiResponse));
-      // bandCardComponent.ngOnInit();
+    const idBand = "1";
+
+    bandCardComponent = new BandCardComponent(bandsService, activatedRoute, domSanitizer, seoService);
+    bandCardComponent.bands = rockBand;
+    bandCardComponent.band = rockBand[0];
+    bandCardComponent.idBand = idBand;
+
+    bandCardComponent.ngOnInit();
   }));
 
   it('should show the detail card band', () => {
@@ -65,6 +77,11 @@ describe('BandsComponent', () => {
     const contentCard = compiled.querySelector('.card-contain a');
     expect(contentCard).toBeTruthy();
     // expect(contentCard.getAttribute('href')).toContain("");/
+  });
+
+  it('should show only one band', () => {
+    const bandName = compiled.querySelector('.card-title');
+    expect(bandName.textContent).toContain("The Rolling Stones");
   });
 
 
