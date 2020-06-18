@@ -1,4 +1,28 @@
 # AngularRocks
+## Introduction
+Rock Bands website
+
+## Description
+I'm going to describe the most important parts to create this page. 
+COMPONENTS. The page has three components: 
+- BandsComponent. Run the main content, the list with all rock bands.
+- NewBandComponent. Form to create a new band.
+- BandCardComponent. Show band card detail.
+
+SERVICE:
+- BandsService: Get data from base date.
+- SeoService: Generate meta tags to SEO.
+
+TESTS
+- Many tests have been created to check the page functionality. 
+
+## Tools
+This project was built with different tools: 
+- Angular (version 9.1.9)
+- Materialize 
+- Typescript
+- HTML 
+- CSS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
