@@ -16,17 +16,11 @@ export class BandsService {
 
   dataUrl = 'https://angular-rocks.firebaseio.com/bands.json';
 
-  bandsSource = new BehaviorSubject([]);
-  currentBands = this.bandsSource.asObservable();
-
   /**
    *Get bands from data base
    */
   getBands(){
-      if( this.bandsSource.getValue().length == 0)
-        return this.http.get<Array<Band>>(this.dataUrl);
-      else
-        return this.currentBands;
+      return this.http.get<Array<Band>>(this.dataUrl);
   }
 
   /**

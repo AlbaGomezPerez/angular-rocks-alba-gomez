@@ -18,7 +18,7 @@ export class SeoService {
    */
     generateTags(config, allRockBands) {
     const allRockBandsData = allRockBands.map(band => {
-      return band.members + band.title + band.name;
+      return band.members + ',' + band.title + ',' + band.name;
     }).join(', ');
       config = {
         title: 'Angular Rocks',

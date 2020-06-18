@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Band, BandsService} from "../services/bands.service";
 import {ActivatedRoute} from "@angular/router";
-import {DomSanitizer} from "@angular/platform-browser";
+import {DomSanitizer, SafeResourceUrl, SafeUrl} from "@angular/platform-browser";
 import {SeoService} from "../services/seo.service";
 
 @Component({
@@ -15,14 +15,21 @@ import {SeoService} from "../services/seo.service";
   *Show the detail band card
 */
 export class BandCardComponent implements OnInit{
-  allRockBands: Array<Band>;
-  band: Band;
+  allRockBands: Array<Band> = [];
   idBand: string;
   dangerousUrl: string;
-  trustedUrl: any;
-  videoUrl: any;
-
-
+  trustedUrl: SafeUrl;
+  videoUrl: SafeResourceUrl;
+  band: Band = {
+    country: '',
+    id: null,
+    image: '',
+    members: '',
+    name: '',
+    title: '',
+    video: '',
+    website: '',
+  };
 
   constructor(
     public bandsService: BandsService,
@@ -33,29 +40,28 @@ export class BandCardComponent implements OnInit{
     this.idBand = this.route.snapshot.params['id'];
     this.dangerousUrl = '';
     this.trustedUrl = sanitizer.bypassSecurityTrustUrl(this.dangerousUrl);
-
   }
 
   /**
    *Filter bands by the id and get selected band
    */
   ngOnInit() {
-    // if(this.bandsService == undefined) {
-    let bandList: Array<Band> = [];
+    this.getBands();
+  }
 
-    this.bandsService.getBands().subscribe(bands => {
-        this.bandsService.bandsSource.next.bind(bands);
+  getBands() {
+    if(this.allRockBands.length == 0) {
+      this.bandsService.getBands().subscribe((bands: Array<Band>) => {
         this.allRockBands = bands;
-
         this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
 
+        let bandList: Array<Band> = [];
         bandList.push(this.band);
+        this.generateCardTags(bandList);
 
         this.updateVideoUrl();
-        this.generateCardTags(bandList);
       });
-    // }
-
+    }
   }
 
   /**

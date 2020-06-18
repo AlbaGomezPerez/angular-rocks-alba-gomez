@@ -17,7 +17,6 @@ import {SeoService} from "../services/seo.service";
 export class BandsComponent implements OnInit {
   constructor(
     public bandsService: BandsService,
-    // private title: Title,
     private seoService: SeoService,
   ){
   }
@@ -30,13 +29,13 @@ export class BandsComponent implements OnInit {
    */
   allRockBands: Array<Band> = [];
   originalBandsList: Array<Band> = BandsJson;
-  searchValue: string;
-  noFilteredBands: Array<Band>;
+  searchValue: string = "";
+  noFilteredBands: Array<Band> = [];
 
   ngOnInit() {
-    let title: string = "Ng Seo - Rock bands website";
-    // this.title.setTitle(title);
-    this.fetchBands();
+    if(this.allRockBands.length == 0) {
+      this.getBandsData();
+    }
   }
 
   /**
@@ -51,15 +50,13 @@ export class BandsComponent implements OnInit {
   }
 
   /**
-   * Get data bands from the data base
+   * Get bands data from the data base
    * Update allRockBands and noFilteredBands with the response
    */
-  private fetchBands() {
+  private getBandsData() {
       this.bandsService
         .getBands()
         .subscribe((bands: Array<Band>) => {
-          console.log(bands);
-          this.bandsService.bandsSource.next.bind(bands);
           this.allRockBands = bands;
           this.noFilteredBands = bands;
           this.generateTags();
@@ -92,7 +89,6 @@ export class BandsComponent implements OnInit {
    */
   updateDatabands(updatedArrayBand: Array<Band>) {
       this.bandsService.updateBands(updatedArrayBand).subscribe((bands: Array<Band>) => {
-        this.bandsService.bandsSource.next.bind(bands);
         this.allRockBands = bands;
         this.noFilteredBands = bands;
         this.generateTags();
@@ -103,7 +99,9 @@ export class BandsComponent implements OnInit {
    * Filter bands list and compare the searchValue introduced by the user with allRockBands
    */
   searchBands(): void {
-    this.allRockBands = this.noFilteredBands.filter(band => band.name.toLowerCase().includes(this.searchValue.toLowerCase()));
+    this.allRockBands = this.noFilteredBands.filter(band => {
+      return band.name.toLowerCase().includes(this.searchValue.toLowerCase());
+    });
   }
 }
 

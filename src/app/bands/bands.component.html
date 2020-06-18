@@ -48,7 +48,7 @@ true}" class="bands">
           <div class="card-action">
             <span class="card-title">{{band.name}}</span>
             <div>
-              <a class="card-detail {{band.name}}" [routerLink]="['/band', band.id ]">
+              <a class="card-detail" [routerLink]="['/band', band.id ]">
                 <i class="material-icons">info</i>
               </a>
               <i class="material-icons remove" (click)="removeBand($event)" id="{{band.id}}">remove_circle</i>

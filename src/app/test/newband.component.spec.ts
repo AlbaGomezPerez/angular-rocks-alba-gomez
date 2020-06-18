@@ -4,7 +4,7 @@ import {NewBandComponent} from '../newBand/newBand.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {BandsService} from "../services/bands.service";
 
-describe('BandsComponent', () => {
+describe('NewbandComponent', () => {
 
   let fixture: ComponentFixture<NewBandComponent>;
   let compiled;
@@ -27,7 +27,6 @@ describe('BandsComponent', () => {
     compiled = fixture.nativeElement;
 
     jsonService = TestBed.get(BandsService);
-
   }));
 
 
@@ -47,9 +46,8 @@ describe('BandsComponent', () => {
   });
 
   it('should show create button with link', () => {
-    const createButton = compiled.querySelector('button');
+    const createButton = compiled.querySelector('#createBand');
     expect(createButton.textContent).toContain("Create");
-    expect(createButton.getAttribute('routerLink')).toContain('/');
   });
 });
 

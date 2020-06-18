@@ -16,6 +16,39 @@ describe('BandsComponent', () => {
   let bandsService: BandsService;
   let seoService: SeoService;
 
+  const allRockBands = [
+    {
+      id: 1,
+      name: "The Rolling Stones",
+      country: "United Kingdom",
+      website: "https://rollingstones.com/",
+      members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
+      image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
+      video: "https://www.youtube.com/embed/qEuV82GqQnE",
+      title: "Ride 'em on down"
+    },
+    {
+      id: 2,
+      name: "Led Zeppelin",
+      country: "United Kingdom",
+      website: "https://lz50.ledzeppelin.com/?ref=https://es.wikipedia.org/",
+      members: "Jimmy Page, Robert Plant, John Paul Jones, John Bonham",
+      image: "https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg",
+      video: "https://www.youtube.com/embed/HQmmM_qwG4k",
+      title: "Whole lotta love"
+    },
+    {
+      id: 3,
+      name: "Queen",
+      country: "United Kingdom",
+      website: "http://www.queenonline.com/es",
+      members: "John Deacon, Freddie Mercury, Brian May, Roger Taylor",
+      image: "https://www.biografiasyvidas.com/biografia/q/fotos/queen.jpg",
+      video: "https://www.youtube.com/embed/kijpcUv-b8M",
+      title: "Somebody to love"
+    }
+  ] as Array<Band>;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -36,43 +69,10 @@ describe('BandsComponent', () => {
     bandsService = TestBed.get(BandsService);
     seoService = TestBed.get(SeoService);
 
-
-      const allRockBands = [
-        {
-          id: 1,
-          name: "The Rolling Stones",
-          country: "United Kingdom",
-          website: "https://rollingstones.com/",
-          members: "Mick Jagger, Keith Richards, Charlie Watts, Ronnie Wood",
-          image: "https://rtvc-assets-radionica3.s3.amazonaws.com/s3fs-public/styles/image_750x424/public/field/image/article/rolling-stones-conciertos-youtube.jpg?itok=Eo9OF1yD",
-          video: "https://www.youtube.com/embed/qEuV82GqQnE",
-          title: "Ride 'em on down"
-        },
-        {
-          id: 2,
-          name: "Led Zeppelin",
-          country: "United Kingdom",
-          website: "https://lz50.ledzeppelin.com/?ref=https://es.wikipedia.org/",
-          members: "Jimmy Page, Robert Plant, John Paul Jones, John Bonham",
-          image: "https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg",
-          video: "https://www.youtube.com/embed/HQmmM_qwG4k",
-          title: "Whole lotta love"
-        },
-        {
-          id: 3,
-          name: "Queen",
-          country: "United Kingdom",
-          website: "http://www.queenonline.com/es",
-          members: "John Deacon, Freddie Mercury, Brian May, Roger Taylor",
-          image: "https://www.biografiasyvidas.com/biografia/q/fotos/queen.jpg",
-          video: "https://www.youtube.com/embed/kijpcUv-b8M",
-          title: "Somebody to love"
-        }
-      ] as Array<Band>;
-
-    bandsService.bandsSource.next(allRockBands);
+    spyOn(bandsService, 'getBands').and.returnValue(of(allRockBands));
     bandsComponent = new BandsComponent(bandsService, seoService);
     bandsComponent.ngOnInit();
+    fixture.detectChanges();
   }));
 
 
@@ -89,7 +89,6 @@ describe('BandsComponent', () => {
   });
 
   it('should show bands list with content', () => {
-    fixture.detectChanges();
     const band = compiled.querySelectorAll('.band-row');
     expect(band.length).toEqual(3);
 
@@ -116,20 +115,16 @@ describe('BandsComponent', () => {
   });
 
   it('should show filtered bands by lin', () => {
-    fixture.detectChanges();
-
-    bandsComponent.searchValue = compiled.querySelector('#search').innerHTML = "lin";
+    compiled.querySelector('#search').value = "lin";
     const filteredBand = compiled.querySelectorAll('.card-title');
     expect(filteredBand[0].textContent).toContain("The Rolling Stones");
     expect(filteredBand[1].textContent).toContain("Led Zeppelin");
   });
 
   it('should show filtered bands by en', () => {
-    fixture.detectChanges();
-
     bandsComponent.searchValue = "Z";
-
-    // bandsComponent.searchValue = compiled.querySelector('#search').innerHTML = "Z";
+    bandsComponent.searchBands();
+    fixture.detectChanges();
     const filteredBand = compiled.querySelector('.card-title');
     expect(filteredBand.textContent).toContain("Led Zeppelin");
   });
