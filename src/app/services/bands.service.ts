@@ -15,6 +15,7 @@ export class BandsService {
   constructor(private http: HttpClient) {}
 
   dataUrl = 'https://angular-rocks.firebaseio.com/bands.json';
+  bandUrl = 'https://angular-rocks.firebaseio.com/bands/';
 
   /**
    *Get bands from data base
@@ -24,11 +25,27 @@ export class BandsService {
   }
 
   /**
-   *Do the put to the data base
-   *@param bands: response (band type array)
+   * Get band by its ID from data base
+   * @param id band id to get
+   */
+  getBand(id: string){
+    return this.http.get<Band>(this.bandUrl + id + '.json');
+  }
+
+  /**
+   * Do the put to the data base
+   * @param bands: response (band type array)
    */
   updateBands(bands: Array<Band>) {
       return this.http.put<Array<Band>>(this.dataUrl, JSON.stringify(bands));
+  }
+
+  /**
+   * Delete a band given by Id
+   * @param id band id to remove
+   */
+  deleteBand(id: string) {
+    return this.http.delete(this.bandUrl + id + '.json');
   }
 }
 

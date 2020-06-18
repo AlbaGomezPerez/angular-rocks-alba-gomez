@@ -97,6 +97,7 @@ export class BandsComponent implements OnInit {
    * Filter bands list and compare the searchValue introduced by the user with allRockBands
    */
   searchBands(): void {
+    console.log(this.searchValue);
     this.allRockBands = this.noFilteredBands.filter(band => {
       return band.name.toLowerCase().includes(this.searchValue.toLowerCase());
     });

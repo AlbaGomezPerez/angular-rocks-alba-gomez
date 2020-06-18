@@ -71,7 +71,9 @@ describe('BandsComponent', () => {
     seoService = TestBed.get(SeoService);
 
     spyOn(bandsService, 'getBands').and.returnValue(of(allRockBands));
-    bandsComponent = new BandsComponent(bandsService, seoService);
+    //bandsComponent = new BandsComponent(bandsService, seoService);
+    bandsComponent = fixture.componentInstance;
+    bandsComponent.bandsService = bandsService;
     bandsComponent.ngOnInit();
     fixture.detectChanges();
   }));
@@ -115,14 +117,17 @@ describe('BandsComponent', () => {
     expect(detailBand[2].getAttribute('href')).toContain('/band/3');
   });
 
-  it('should show filtered bands by lin', () => {
-    compiled.querySelector('#search').value = "lin";
+  it('should show filtered bands by "lin" and find two bands', () => {
+    bandsComponent.searchValue = "lin";
+    bandsComponent.searchBands();
+    fixture.detectChanges();
     const filteredBand = compiled.querySelectorAll('.card-title');
     expect(filteredBand[0].textContent).toContain("The Rolling Stones");
     expect(filteredBand[1].textContent).toContain("Led Zeppelin");
+    expect(filteredBand.length).toBe(2);
   });
 
-  it('should show filtered bands by en', () => {
+  it('should show filtered bands by "ZE" and find Led Zeppelin band', () => {
     bandsComponent.searchValue = "Z";
     bandsComponent.searchBands();
     fixture.detectChanges();
@@ -130,6 +135,21 @@ describe('BandsComponent', () => {
     expect(filteredBand.textContent).toContain("Led Zeppelin");
   });
 
+  it('should show filtered bands by "z" and find Led Zeppelin band', () => {
+    bandsComponent.searchValue = "z";
+    bandsComponent.searchBands();
+    fixture.detectChanges();
+    const filteredBand = compiled.querySelector('.card-title');
+    expect(filteredBand.textContent).toContain("Led Zeppelin");
+  });
+
+  it('should show filtered bands by "ue" and find Queen band', () => {
+    bandsComponent.searchValue = "ue";
+    bandsComponent.searchBands();
+    fixture.detectChanges();
+    const filteredBand = compiled.querySelector('.card-title');
+    expect(filteredBand.textContent).toContain("Queen");
+  });
 });
 
 

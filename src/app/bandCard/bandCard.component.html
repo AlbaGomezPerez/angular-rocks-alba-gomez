@@ -7,7 +7,7 @@
           <a routerLink="/list" class="waves-effect waves-light btn back-button">
             <i class="material-icons back left">keyboard_backspace</i>Go back
           </a>
-          <div *ngIf="band.id === null || band.id === undefined; else elseBlock">
+          <div *ngIf="band.id === null; else elseBlock">
             <div>
               <span class="card-title error-message">Band not found</span>
               <img

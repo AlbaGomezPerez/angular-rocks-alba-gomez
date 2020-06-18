@@ -14,7 +14,6 @@ import {SeoService} from "../services/seo.service";
   *Show the band detail card
 */
 export class BandCardComponent implements OnInit{
-  allRockBands: Array<Band> = [];
   idBand: string;
   dangerousUrl: string;
   trustedUrl: SafeUrl;
@@ -45,20 +44,20 @@ export class BandCardComponent implements OnInit{
    *Filter bands by the id and get selected band
    */
   ngOnInit() {
-    this.getBands();
+    this.getBand();
   }
 
-  getBands() {
-    if(this.allRockBands.length == 0) {
-      this.bandsService.getBands().subscribe((bands: Array<Band>) => {
-        this.allRockBands = bands;
-        this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
+  getBand() {
+    if(this.band.id === null) {
+      this.bandsService.getBand(this.idBand).subscribe((band: Band) => {
+        if(band !== null) {
+          this.band = band;
+          let bandList: Array<Band> = [];
+          bandList.push(this.band);
+          this.generateCardTags(bandList);
 
-        let bandList: Array<Band> = [];
-        bandList.push(this.band);
-        this.generateCardTags(bandList);
-
-        this.updateVideoUrl();
+          this.updateVideoUrl();
+        }
       });
     }
   }
