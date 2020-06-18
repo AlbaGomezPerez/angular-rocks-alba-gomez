@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-//import { HttpClient } from '@angular/common/http';
 import {Band, BandsService} from "../services/bands.service";
 import BandsJson from "src/assets/json/bands.json";
-import {Title, Meta} from '@angular/platform-browser';
 import {SeoService} from "../services/seo.service";
 
 
@@ -22,10 +20,10 @@ export class BandsComponent implements OnInit {
   }
 
   /**
-   //allRockBands: Array which contains objects (type Band) with all bands data
-   //originalBandsList: Array which contains bands in original json file
-   //searchValue: text introduced by the user in the search input
-   //noFilteredBands: Array updated when a band is removed
+   * allRockBands: Array which contains objects (type Band) with all bands data
+   * originalBandsList: Array which contains bands in original json file
+   * searchValue: text introduced by the user in the search input
+   * noFilteredBands: Array updated when a band is removed
    */
   allRockBands: Array<Band> = [];
   originalBandsList: Array<Band> = BandsJson;
@@ -64,8 +62,8 @@ export class BandsComponent implements OnInit {
   }
 
   /**
-   //Get id band selected to remove
-   //Filter allRockbands and update filteredBands with all bands except band to removed
+   * Get id band selected to remove
+   * Filter allRockbands and update filteredBands with all bands except band to removed
    */
   removeBand(event): void {
     let idBand = event.target.id;

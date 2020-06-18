@@ -50,11 +50,3 @@ describe('NewbandComponent', () => {
     expect(createButton.textContent).toContain("Create");
   });
 });
-
-
-
-//TESTS
-//Aparece formulario
-//inputs
-//Button volver
-//Button crear

@@ -2,7 +2,6 @@
   <h1>Rock bands website</h1>
   <p>70s Rock bands</p>
 </div>
-
 <div routerLink="/list" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:
 true}" class="bands">
   <nav>
@@ -25,8 +24,10 @@ true}" class="bands">
         </li>
         <li class="col l6 s12 m6 xl3">
           <a>
-            <span class="btn-text waves-effect waves-light btn action-button"
-                  routerLink="/form">Create new rock band</span>
+            <span
+              class="btn-text waves-effect waves-light btn action-button"
+              routerLink="/form">Create new rock band
+            </span>
           </a>
         </li>
         <li class="col l6 s12 m6 xl3">
@@ -51,7 +52,11 @@ true}" class="bands">
               <a class="card-detail" [routerLink]="['/band', band.id ]">
                 <i class="material-icons">info</i>
               </a>
-              <i class="material-icons remove" (click)="removeBand($event)" id="{{band.id}}">remove_circle</i>
+              <i
+                class="material-icons remove"
+                (click)="removeBand($event)"
+                id="{{band.id}}">remove_circle
+              </i>
             </div>
           </div>
         </div>
@@ -59,8 +64,6 @@ true}" class="bands">
     </div>
   </div>
 </div>
-
-
 <router-outlet></router-outlet>
 
 

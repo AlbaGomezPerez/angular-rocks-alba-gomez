@@ -2,10 +2,10 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BandsComponent} from '../bands/bands.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {Observable, of} from "rxjs";
+import {of} from "rxjs";
 import {BandsService, Band} from "../services/bands.service";
 import {SeoService} from "../services/seo.service";
-import {Title} from "@angular/platform-browser";
+import {FormsModule} from "@angular/forms";
 
 
 describe('BandsComponent', () => {
@@ -54,6 +54,7 @@ describe('BandsComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
+        FormsModule
       ],
       declarations: [
         BandsComponent
@@ -131,11 +132,4 @@ describe('BandsComponent', () => {
 
 });
 
-
-
-//TESTS
-    //bands list (crear una lista falsa y mirar lenght y el contenido)
-      //imagen
-      //nombre
-      //iconos con sus links
 

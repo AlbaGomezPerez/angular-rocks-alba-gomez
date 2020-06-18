@@ -10,9 +10,8 @@ import {SeoService} from "../services/seo.service";
   styleUrls: ['./bandCard.component.css']
 })
 
-
 /**
-  *Show the detail band card
+  *Show the band detail card
 */
 export class BandCardComponent implements OnInit{
   allRockBands: Array<Band> = [];

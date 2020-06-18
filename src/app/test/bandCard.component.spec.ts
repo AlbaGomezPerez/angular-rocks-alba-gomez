@@ -2,13 +2,13 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {RouterTestingModule} from '@angular/router/testing';
 import {BandCardComponent} from '../bandCard/bandCard.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
-import {Observable, of} from "rxjs";
+import {of} from "rxjs";
 import {BandsService, Band} from "../services/bands.service";
 import {SeoService} from "../services/seo.service";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
 
-describe('BandCardComponent', () => {
+fdescribe('BandCardComponent', () => {
 
   let fixture: ComponentFixture<BandCardComponent>;
   let compiled;
@@ -66,7 +66,7 @@ describe('BandCardComponent', () => {
         SeoService,
         {
           provide: ActivatedRoute,
-          useValue: {snapshot: {params: {id: '1'}}}
+          useValue: {snapshot: {params: {id: '2'}}}
         }
       ]
     }).compileComponents();
@@ -102,16 +102,27 @@ describe('BandCardComponent', () => {
 
   it('should show only one band', () => {
     const bandName = compiled.querySelector('.card-title');
-    expect(bandName.textContent).toContain("The Rolling Stones");
+    expect(bandName.textContent).toContain("Led Zeppelin");
   });
 
+  it('should show Led Zeppelin band', () => {
+    const RollingBand = compiled.querySelectorAll('.data-band');
+    expect(RollingBand[0].textContent).toContain("United Kingdom");
+    expect(RollingBand[1].textContent).toContain("Whole lotta love");
+    expect(RollingBand[2].textContent).toContain("Jimmy Page, Robert Plant, John Paul Jones, John Bonham");
 
+    const bandWeb = compiled.querySelector('.web-band');
+    expect(bandWeb.getAttribute('href')).toContain('https://lz50.ledzeppelin.com/?ref=https://es.wikipedia.org/');
+    expect(compiled.querySelector('iframe').getAttribute('src')).toContain('https://www.youtube.com/embed/HQmmM_qwG4k');
+    expect(compiled.querySelector('.band-image').getAttribute('src')).toContain('https://elpais.com/elpais/imagenes/2014/05/13/eps/1399982090_975034_1399998601_sumario_grande.jpg');
+  });
+
+  it('should show a message when it is not band', () => {
+    bandCardComponent.idBand = "10";
+    bandCardComponent.getBands();
+    fixture.detectChanges();
+    const filteredBand = compiled.querySelector('.error-message');
+    expect(filteredBand.textContent).toContain("Band not found");
+  });
 });
 
-
-//TESTS
-  //Render card
-  //Button back con link
-  //iframe con contenido
-  //website con link
-  //Crear lista falsa con id y datos, match

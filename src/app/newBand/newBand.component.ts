@@ -24,12 +24,13 @@ export class NewBandComponent implements OnInit {
     website: '',
   };
 
-  constructor (public bandsService: BandsService,
-               private router: Router) {}
+  constructor (
+    public bandsService: BandsService,
+    private router: Router) {}
 
 
   /**
-   * Update allRockBands and bandsService
+   * Update allRockBands from bandsService
    */
   ngOnInit () {
     this.getBands();
@@ -44,14 +45,15 @@ export class NewBandComponent implements OnInit {
   }
 
   /**
-   *Generate random id
+   * Generate random id
    */
   generateBandId(min, max) {
     return Math.random() * (max - min) + min;
   }
 
   /**
-   *Get data band created by the user
+   * Get data band created by the user
+   * Fix default data
    */
   getDataForm () {
     const defaultImage = "https://concepto.de/wp-content/uploads/2018/09/rock-e1536060138214.jpg";
@@ -75,10 +77,8 @@ export class NewBandComponent implements OnInit {
    * next: indicate the type of response and update the state again
    */
   updateDatabands(updatedArrayBand: Array<Band>) {
-    console.log('entro');
       this.bandsService.updateBands(updatedArrayBand).subscribe({
         next: (bands: Array<Band>) => {
-          console.log(bands);
           this.router.navigate(['/list']);
         }
       });

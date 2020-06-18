@@ -11,6 +11,7 @@
   padding-bottom: 1%;
   background-color: #171717;
   border: 1px solid #171717;
+  box-shadow: none;
 }
 
 .card-action {
@@ -90,9 +91,7 @@ iframe {
 .data-band {
   margin-bottom: 4%;
 }
-.card {
-  box-shadow: none;
-}
+
 
 
 
