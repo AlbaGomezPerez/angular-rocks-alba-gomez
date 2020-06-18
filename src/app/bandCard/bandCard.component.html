@@ -7,25 +7,38 @@
           <a routerLink="/list" class="waves-effect waves-light btn back-button">
             <i class="material-icons back left">keyboard_backspace</i>
             Go back</a>
-          <span class="card-title">{{band.name}}
-                        </span>
-          <div class="center col m6 l8 data-container">
-            <img class="band-image" [src]="band.image" alt="band">
-          </div>
-          <div class="card-image">
-            <div class="card-contain col s12 m6 l4">
-              <span class="btn-text waves-effect waves-light btn">Country: <i class="material-icons right">location_on</i></span>
-              <span class="center data-band">{{band.country}}</span>
-              <span class="btn-text waves-effect waves-light btn">Video's song:<i class="material-icons right">music_note</i></span>
-              <span class="center data-band">{{band.title}}</span>
-              <span class="btn-text waves-effect waves-light btn center">Members:<i class="material-icons right">people</i></span>
-              <span class="center members data-band">{{band.members}}</span>
-              <a href="{{band.website}}" target="blank" class="center">Website
-              </a>
+
+          <div *ngIf="band.id === null || band.id === undefined; else elseBlock">
+            <div>
+              <span class="card-title">Band not found</span>
+              <img class="band-image" src="https://concepto.de/wp-content/uploads/2018/09/rock-e1536060138214.jpg"/>
             </div>
-            <iframe [src]="videoUrl" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<!--            <iframe src="https://www.youtube.com/embed/vr1MGKII5mw" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+
           </div>
+          <ng-template #elseBlock>
+            <span class="card-title">{{band.name}}
+                        </span>
+            <div class="center col m6 l8 data-container">
+              <img class="band-image" [src]="band.image" alt="band">
+            </div>
+            <div class="card-image">
+              <div class="card-contain col s12 m6 l4">
+                <span class="btn-text waves-effect waves-light btn">Country: <i class="material-icons right">location_on</i></span>
+                <span class="center data-band">{{band.country}}</span>
+                <span class="btn-text waves-effect waves-light btn">Video's song:<i class="material-icons right">music_note</i></span>
+                <span class="center data-band">{{band.title}}</span>
+                <span class="btn-text waves-effect waves-light btn center">Members:<i class="material-icons right">people</i></span>
+                <span class="center members data-band">{{band.members}}</span>
+                <a href="{{band.website}}" target="blank" class="center">Website
+                </a>
+              </div>
+              <iframe [src]="videoUrl" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <!--            <iframe src="https://www.youtube.com/embed/vr1MGKII5mw" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>-->
+            </div>
+
+          </ng-template>
+
+
         </div>
       </div>
     </div>
