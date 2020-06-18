@@ -79,6 +79,7 @@ a {
 
 .action-button {
   margin-top: 1%;
+  justify-content: space-around;
 }
 
 .search-button {
@@ -103,7 +104,24 @@ nav {
 
 @media (max-width: 380px) {
   nav {
-    margin-bottom: 70px;
+    margin-bottom: 120px;
+  }
+  .action-button {
+    display: flex;
+    flex-direction: column;
+  }
+  .search-button {
+    width: 110%;
+  }
+}
+
+@media (max-width: 1024px) {
+  nav {
+    margin-bottom: 80px;
+  }
+  .action-button {
+    display: flex;
+    flex-direction: column;
   }
 }
 
