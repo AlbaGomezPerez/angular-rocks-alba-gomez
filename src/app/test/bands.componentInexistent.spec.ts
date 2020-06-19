@@ -7,7 +7,6 @@ import {BandsService, Band} from "../services/bands.service";
 import {SeoService} from "../services/seo.service";
 import {ActivatedRoute} from "@angular/router";
 import {DomSanitizer} from "@angular/platform-browser";
-import {ChangeDetectionStrategy} from "@angular/core";
 
 describe('BandCardComponent inexistent', () => {
 
@@ -51,7 +50,7 @@ describe('BandCardComponent inexistent', () => {
     }).compileComponents();
   }));
 
-  describe('load the band card page', () => {
+  describe('load the message error in card page', () => {
     beforeEach(() => {
       fixture = TestBed.createComponent(BandCardComponent);
       compiled = fixture.nativeElement;

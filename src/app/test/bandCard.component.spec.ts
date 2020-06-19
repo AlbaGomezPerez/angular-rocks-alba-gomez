@@ -102,11 +102,10 @@ describe('BandCardComponent', () => {
       expect(backButton.getAttribute('routerLink')).toContain('/list');
     });
 
-    it('should show the go back button', () => {
+    it('should show website band link', () => {
       fixture.detectChanges();
       const contentCard = compiled.querySelector('.card-contain a');
       expect(contentCard).toBeTruthy();
-      // expect(contentCard.getAttribute('href')).toContain("");/
     });
 
     it('should show only one band', () => {

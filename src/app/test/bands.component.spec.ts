@@ -71,7 +71,6 @@ describe('BandsComponent', () => {
     seoService = TestBed.get(SeoService);
 
     spyOn(bandsService, 'getBands').and.returnValue(of(allRockBands));
-    //bandsComponent = new BandsComponent(bandsService, seoService);
     bandsComponent = fixture.componentInstance;
     bandsComponent.bandsService = bandsService;
     bandsComponent.ngOnInit();

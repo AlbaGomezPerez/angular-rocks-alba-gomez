@@ -38,6 +38,17 @@ true}" class="bands">
       </ul>
     </div>
   </nav>
+  <div class="center container error-content" *ngIf="allRockBands === null; else elseBlock">
+    <div class="row">
+      <div class="card circle">
+          <span class="card-title">There are not bands</span>
+        <div class="card-image circle">
+          <img class="error-image" src="../band.jpg" alt="band">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
   <div class="container center"
        *ngFor="let band of allRockBands">
     <div class="row band-row">
@@ -63,6 +74,7 @@ true}" class="bands">
       </div>
     </div>
   </div>
+  </ng-template>
 </div>
 <router-outlet></router-outlet>
 
