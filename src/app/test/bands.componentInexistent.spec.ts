@@ -61,7 +61,7 @@ describe('BandCardComponent inexistent', () => {
       domSanitizer = TestBed.get(DomSanitizer);
       activatedRoute = TestBed.get(ActivatedRoute);
 
-      spyOn(bandsService, 'getBand').withArgs('99').and.returnValue(of(null));
+      spyOn(bandsService, 'getBands').and.returnValue(of([]));
       bandCardComponent = fixture.componentInstance;
       bandCardComponent.bandsService = bandsService;
     });

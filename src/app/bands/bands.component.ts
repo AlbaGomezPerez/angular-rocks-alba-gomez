@@ -37,17 +37,6 @@ export class BandsComponent implements OnInit {
   }
 
   /**
-   * Get keywords from the seoService
-   */
-  generateTags() {
-    this.seoService.generateTags({
-      title: "Ng Seo - Rock bands website",
-      description: "70s Rock bands",
-      slug: 'Rock bands'
-    }, this.allRockBands);
-  }
-
-  /**
    * Get bands data from the data base
    * Update allRockBands and noFilteredBands with the response
    */
@@ -97,10 +86,20 @@ export class BandsComponent implements OnInit {
    * Filter bands list and compare the searchValue introduced by the user with allRockBands
    */
   searchBands(): void {
-    console.log(this.searchValue);
     this.allRockBands = this.noFilteredBands.filter(band => {
       return band.name.toLowerCase().includes(this.searchValue.toLowerCase());
     });
+  }
+
+  /**
+   * Get keywords from the seoService
+   */
+  generateTags() {
+    this.seoService.generateTags({
+      title: "Ng Seo - Rock bands website",
+      description: "70s Rock bands",
+      slug: 'Rock bands'
+    }, this.allRockBands);
   }
 }
 

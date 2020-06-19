@@ -49,9 +49,9 @@ export class BandCardComponent implements OnInit{
 
   getBand() {
     if(this.band.id === null) {
-      this.bandsService.getBand(this.idBand).subscribe((band: Band) => {
-        if(band !== null) {
-          this.band = band;
+      this.bandsService.getBands().subscribe((bands: Array<Band>) => {
+        if(bands !== null && bands !== undefined) {
+          this.band = bands.filter(band => band.id === parseInt(this.idBand)).shift();
           let bandList: Array<Band> = [];
           bandList.push(this.band);
           this.generateCardTags(bandList);
