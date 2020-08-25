@@ -1,4 +1,4 @@
-# AngularRocks
+# Angular rocks
 ## Introduction
 Rock Bands website
 
